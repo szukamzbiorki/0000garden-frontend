@@ -19,11 +19,11 @@ export default defineNuxtConfig({
 					href: '/favicon.ico',
 				},
 			],
-			title: 'Garden',
+			title: 'Garden Archive',
 		},
 	},
 	sanity: {
-		projectId: '9t1iwjq9',
+		projectId: '9tabryc1',
 		dataset: 'production',
 	},
 	modules: ['@nuxtjs/sanity', '@vueuse/nuxt'],
