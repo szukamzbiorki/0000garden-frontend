@@ -64,7 +64,13 @@
 
 <style lang="postcss" scoped>
 	.swiper {
-		width: 100vw;
+		width: calc(100vw-2 * var(--space-m));
+		& > .bar {
+			width: calc(100vw-2 * var(--space-m));
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+		}
 	}
 
 	.swiper-wrapper {

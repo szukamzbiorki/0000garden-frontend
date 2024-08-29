@@ -97,7 +97,7 @@ body {
 body,
 .page,
 #_nuxt {
-	overflow: hidden;
+	overflow: scroll;
 }
 ::selection {
 	background: lightblue;

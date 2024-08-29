@@ -17,7 +17,12 @@
 
 <script setup>
 	const route = useRoute()
-	const query = groq`*[_type=="acre" && slug.current==$id]{download{asset->}, ...}[0]`
+	const query = groq`*[_type=="acre" && slug.current==$id]{download{asset->}, blocks[]{
+  _type == "video" => @->,
+  _type != "video" => {
+    ...
+  }
+}, ...}[0]`
 	const sanity = useSanity()
 	const { data: acre } = await useAsyncData('acre', () =>
 		sanity.fetch(query, { id: route.params.id })

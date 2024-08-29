@@ -23,7 +23,7 @@
 		<component
 			v-for="(comp, i) in sections"
 			:is="components.get(comp._type)"
-			:content="comp"
+			v-bind="comp._type == 'video' ? { ...comp } : { content: comp }"
 			:class="[
 				`${naming.get(comp._type)}-block`,
 				{ ['first-block']: i === 0, ['last-block']: i === sections.length - 1 },
