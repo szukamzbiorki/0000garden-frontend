@@ -103,22 +103,6 @@
 	// 		video.value.pause()
 	// 	}
 	// })
-	// const initVideo = (src) => {
-	// 	if (!Hls.isSupported()) {
-	// 		video.value.src = src
-	// 	} else {
-	// 		if (!hls) {
-	// 			hls = new Hls({
-	// 				autoStartLoad: false,
-	// 				startLevel: 5,
-	// 			})
-	// 		} else {
-	// 			hls.stopLoad()
-	// 		}
-	// 		hls.loadSource(src)
-	// 		hls.attachMedia(video.value)
-	// 	}
-	// }
 
 	const initVideo = (src) => {
 		if (!Hls.isSupported()) {
@@ -134,17 +118,12 @@
 			}
 			hls.loadSource(src)
 			hls.attachMedia(video.value)
-			hls.on(Hls.Events.MANIFEST_PARSED, function () {
-				if (props.autoplay) {
-					video.value.play()
-				}
-			})
 		}
 	}
 </script>
 
 <template>
-	<div class="video-wrapper">
+	<div class="video-wrapper" :title="''">
 		<div class="controls">
 			<div @click="playing = !playing" class="play">
 				{{ playing ? 'Pause' : 'Play' }}

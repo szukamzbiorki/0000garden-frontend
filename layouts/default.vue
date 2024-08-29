@@ -35,7 +35,8 @@
 <style lang="postcss" scoped>
 	header {
 		& > * {
-			position: absolute;
+			position: fixed;
+			z-index: 30;
 		}
 		& > .mailinglist {
 			top: var(--space-m);
