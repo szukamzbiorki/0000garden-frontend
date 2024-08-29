@@ -1,45 +1,48 @@
 <template>
-	<div class="wrapper">
-		<div class="page">
-			<a href="https://0001.garden" class="mailinglist">Mailinglist</a>
-			<div class="top">
-				<div class="logo">
-					<img
-						class="logo-img"
-						src="/assets/garden-logo-ar.svg"
-						alt=""
-						srcset=""
-					/>
+	<div class="page">
+		<div class="archive" :class="{ scaled }">
+			<div class="emails">
+				<div class="title">Email Archive</div>
+				<div class="list">
+					<NuxtLink
+						:to="'email/' + acre.slug.current"
+						v-for="(acre, i) in data.mails"
+						class="item"
+					>
+						<div class="no">{{ i + 1 }}</div>
+						<div v-if="!mobile" class="date">{{ acre.date }}</div>
+						<div class="title">{{ acre.title }}</div>
+						<div v-if="!mobile" class="subject">{{ acre.subject }}</div>
+						<a
+							v-if="!mobile"
+							download
+							:href="acre.download.asset.url"
+							class="dl"
+							>{{ acre.download.asset.originalFilename }}</a
+						>
+					</NuxtLink>
 				</div>
 			</div>
-			<div class="archive">
-				<div class="emails">
-					<div class="title">Email Archive</div>
-					<div class="list">
-						<div v-for="(acre, i) in data.mails" class="item">
-							<div class="no">{{ i + 1 }}</div>
-							<div class="date">{{ acre.date }}</div>
-							<div class="title">{{ acre.title }}</div>
-							<div class="subject">{{ acre.subject }}</div>
-							<a download :href="acre.download.asset.url" class="dl">{{
-								acre.download.asset.originalFilename
-							}}</a>
-						</div>
-					</div>
-				</div>
-				<div class="acres">
-					<div class="title">Acre Archive</div>
-					<div class="list">
-						<div v-for="(acre, i) in data.acres" class="item">
-							<div class="no">{{ i + 1 }}</div>
-							<div class="date">{{ acre.date }}</div>
-							<div class="title">{{ acre.title }}</div>
-							<div class="subject">{{ acre.subject }}</div>
-							<a download :href="acre.download.asset.url" class="dl">{{
-								acre.download.asset.originalFilename
-							}}</a>
-						</div>
-					</div>
+			<div class="acres">
+				<div class="title">Acre Archive</div>
+				<div class="list">
+					<NuxtLink
+						:to="'acre/' + acre.slug.current"
+						v-for="(acre, i) in data.acres"
+						class="item"
+					>
+						<div class="no">{{ i + 1 }}</div>
+						<div v-if="!mobile" class="date">{{ acre.date }}</div>
+						<div class="title">{{ acre.title }}</div>
+						<div v-if="!mobile" class="subject">{{ acre.subject }}</div>
+						<a
+							v-if="!mobile"
+							download
+							:href="acre.download.asset.url"
+							class="dl"
+							>{{ acre.download.asset.originalFilename }}</a
+						>
+					</NuxtLink>
 				</div>
 			</div>
 		</div>
@@ -54,6 +57,8 @@
 	}`
 	const sanity = useSanity()
 	const { data } = await useAsyncData(() => sanity.fetch(query))
+	const { mobile } = useScreenSize()
+	const scaled = ref(false)
 
 	console.log(data.value.acres)
 
@@ -91,32 +96,19 @@
 	.page {
 		& > * {
 			position: absolute;
-		}
-		& > .mailinglist {
-			top: var(--space-m);
-			right: var(--space-m);
-		}
-		& > .top {
-			top: var(--space-m);
-			left: 50vw;
-			transform: translateX(-50%);
-			display: flex;
-			flex-direction: column;
-			gap: var(--space-xl);
-			& > .logo {
-				& > * {
-					height: 6rem;
-				}
-			}
+			top: calc(6rem + 2 * var(--space-m));
+			left: var(--space-m);
 		}
 		& > .archive {
-			top: calc(6rem + 2 * var(--space-m));
-			left: 50vw;
 			width: calc(100vw - 2 * var(--space-m));
-			transform: translateX(-50%);
 			display: flex;
 			flex-direction: column;
 			gap: var(--space-xl);
+			transition: all 0.3s ease;
+			transform-origin: top left;
+			&.scaled {
+				transform: scale(0.25);
+			}
 			& > * {
 				& > .title {
 					margin-bottom: var(--space-m);
@@ -129,6 +121,10 @@
 						display: grid;
 						grid-template-columns: repeat(12, 1fr);
 						border-bottom: var(--grey) 1px solid;
+						@media screen and (max-width: 640px) {
+							grid-template-columns: repeat(4, 1fr);
+						}
+						gap: var(--space-m);
 						& > .no {
 							&::before {
 								content: 'Number: ';

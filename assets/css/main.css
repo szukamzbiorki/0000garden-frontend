@@ -1,37 +1,37 @@
 @font-face {
 	font-family: 'HG';
 	src: url('/assets/HaasGrotDisp-55Roman.otf') format('otf');
-	font-weight: 500; /* Light weight */
+	font-weight: 500;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'HG';
 	src: url('/assets/HaasGrotDisp-65Medium.otf') format('otf');
-	font-weight: 600; /* Light weight */
+	font-weight: 600;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'HG';
 	src: url('/assets/HaasGrotDisp-75Bold.otf') format('otf');
-	font-weight: 700; /* Light weight */
+	font-weight: 700;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'HG';
 	src: url('/assets/HaasGrotDisp-55RomanItalic.otf') format('otf');
-	font-weight: 500; /* Light weight */
+	font-weight: 500;
 	font-style: italic;
 }
 @font-face {
 	font-family: 'HG';
 	src: url('/assets/HaasGrotDisp-65MediumItalic.otf') format('otf');
-	font-weight: 600; /* Light weight */
+	font-weight: 600;
 	font-style: italic;
 }
 @font-face {
 	font-family: 'HG';
 	src: url('/assets/HaasGrotDisp-75BoldItalic.otf') format('otf');
-	font-weight: 700; /* Light weight */
+	font-weight: 700;
 	font-style: italic;
 }
 
@@ -46,8 +46,8 @@ img {
 :root {
 	--type-s: 10px;
 	--type-s-leading: 13px;
-	--type-m: 13px;
-	--type-m-leading: 16px;
+	--type-m: 12px;
+	--type-m-leading: 15px;
 	--type-l: 19px;
 	--type-l-leading: 24px;
 	--margin: 10px;
@@ -64,6 +64,8 @@ img {
 	:root {
 		--gridspace: 3px;
 		--gridspace2: 60px;
+		--type-m: 13px;
+		--type-m-leading: 16px;
 		--type-l: 16px;
 		--type-l-leading: 20px;
 	}
@@ -122,14 +124,6 @@ body {
 	display: none;
 }
 
-#__nuxt > div {
-	display: grid;
-
-	& > *:not(a) {
-		grid-area: 1/1;
-	}
-}
-
 #__nuxt,
 .page {
 	overflow: hidden;
@@ -137,6 +131,14 @@ body {
 
 .page {
 	max-height: 100vh;
+}
+
+.page {
+	& > * {
+		position: absolute;
+		top: calc(6rem + 2 * var(--space-m));
+		left: var(--space-m);
+	}
 }
 
 * {
@@ -186,8 +188,7 @@ input.text {
 	padding-left: var(--space-s);
 	color: white;
 	border-radius: var(--border-radius);
-	&:hover {
-	}
+
 	&:focus {
 		border-bottom: white 2px solid;
 		background-color: rgba(255, 255, 255, 0.45);
@@ -215,4 +216,14 @@ input.btn {
 		background-color: rgba(255, 255, 255, 0.5);
 		color: rgba(255, 255, 255, 0.9);
 	}
+}
+
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.4s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+	opacity: 0;
 }
