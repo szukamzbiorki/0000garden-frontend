@@ -33,7 +33,7 @@
 		},
 		autoplay: {
 			type: Boolean,
-			default: true,
+			default: false,
 		},
 	})
 
@@ -79,11 +79,10 @@
 		if (props.autoplay) {
 			muted.value = true
 			video.value.loop = 'loop'
-			video.value.autoplay = 'autoplay'
+			// video.value.autoplay = 'autoplay'
 			video.value.muted = true
 		}
 		initVideo(props.src)
-		console.log(props.src)
 	})
 
 	onUnmounted(() => {
@@ -96,6 +95,30 @@
 	// watch(src.value, (v) => {
 	// 	initVideo(v)
 	// })
+
+	// watch(playing, (newPlaying) => {
+	// 	if (newPlaying) {
+	// 		video.value.play()
+	// 	} else {
+	// 		video.value.pause()
+	// 	}
+	// })
+	// const initVideo = (src) => {
+	// 	if (!Hls.isSupported()) {
+	// 		video.value.src = src
+	// 	} else {
+	// 		if (!hls) {
+	// 			hls = new Hls({
+	// 				autoStartLoad: false,
+	// 				startLevel: 5,
+	// 			})
+	// 		} else {
+	// 			hls.stopLoad()
+	// 		}
+	// 		hls.loadSource(src)
+	// 		hls.attachMedia(video.value)
+	// 	}
+	// }
 
 	const initVideo = (src) => {
 		if (!Hls.isSupported()) {
@@ -111,19 +134,29 @@
 			}
 			hls.loadSource(src)
 			hls.attachMedia(video.value)
+			hls.on(Hls.Events.MANIFEST_PARSED, function () {
+				if (props.autoplay) {
+					video.value.play()
+				}
+			})
 		}
 	}
 </script>
 
 <template>
-	<div>
-		<div :class="['video-container', { autoplay }]">
-			<video
-				ref="video"
-				@click="!autoplay ? (playing = false) : () => {}"
-				playsinline
-			/>
-			<Transition name="fade">
+	<div class="video-wrapper">
+		<div class="controls">
+			<div @click="playing = !playing" class="play">
+				{{ playing ? 'Pause' : 'Play' }}
+			</div>
+			<div @click="muted = !muted" class="mute">
+				{{ muted ? 'Unmute' : 'Mute' }}
+			</div>
+		</div>
+		<div :class="['video-container']">
+			<video ref="video" playsinline />
+			<!-- @click="!autoplay ? (playing = false) : () => {}" -->
+			<!-- <Transition name="fade">
 				<Media
 					:medium="poster"
 					v-if="poster"
@@ -131,7 +164,7 @@
 					@click="playing = true"
 					class="poster"
 				/>
-			</Transition>
+			</Transition> -->
 		</div>
 
 		<!-- <ElementsText tag="figcaption" v-if="showCaption && caption">
@@ -141,6 +174,14 @@
 </template>
 
 <style lang="postcss" scoped>
+	.video-wrapper {
+		& > .controls {
+			width: calc(100vw-2 * var(--space-m));
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+	}
 	.video-container {
 		position: relative;
 		background-color: white;

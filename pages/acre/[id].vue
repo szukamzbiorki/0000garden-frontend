@@ -27,7 +27,6 @@
 	const { data: acre } = await useAsyncData('acre', () =>
 		sanity.fetch(query, { id: route.params.id })
 	)
-	console.log(acre.value)
 	const { mobile } = useScreenSize()
 </script>
 
