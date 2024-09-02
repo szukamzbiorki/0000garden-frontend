@@ -9,11 +9,32 @@
 			<div class="swiper-wrapper">
 				<div
 					v-if="content.images?.length > 1"
-					v-for="image in content.images"
+					v-for="(image, i) in content.images"
 					:key="image._id"
 					class="swiper-slide"
 				>
-					<ElementMedia class="swiperimg" :medium="image"></ElementMedia>
+					<!-- <ElementMedia class="swiperimg" :medium="image"></ElementMedia> -->
+					<!-- <component
+						:is="components.get(image._type)"
+						v-bind="image._type == 'video' ? { ...image } : { content: image }"
+						:class="[
+							`${naming.get(image._type)}-block`,
+							{
+								['first-block']: i === 0,
+								['last-block']: i === content.images.length - 1,
+							},
+						]"
+					></component> -->
+					<ElementMedia
+						v-if="image._type == 'image'"
+						class="swiperimg"
+						:medium="image"
+					></ElementMedia>
+					<BlocksVideoCopy
+						v-else
+						v-bind="{ ...image }"
+						class="swiperimg"
+					></BlocksVideoCopy>
 				</div>
 				<div v-else class="swiper-slide">
 					<ElementMedia class="swiperimg" :medium="image"></ElementMedia>
@@ -37,6 +58,16 @@
 	const swipe = ref(null)
 	const swiper = ref()
 	const slideNumber = ref(1)
+
+	const components = new Map([
+		['image', resolveComponent('LazyElementMedia')],
+		['video', resolveComponent('LazyBlocksVideoCopy')],
+	])
+
+	const naming = new Map([
+		['image', 'image'],
+		['video', 'video'],
+	])
 
 	onMounted(() => {
 		if (props.content?.images.length > 1) {

@@ -33,7 +33,7 @@
 		},
 		autoplay: {
 			type: Boolean,
-			default: true,
+			default: false,
 		},
 	})
 
@@ -135,8 +135,19 @@
 			} else {
 				hls.stopLoad()
 			}
+			if (hls) {
+				hls.startLoad()
+			} else if (video.value?.src !== src.value) {
+				video.value.src = src.value
+			}
 			hls.loadSource(src)
 			hls.attachMedia(video.value)
+
+			if (video?.value) {
+				if (playing.value) {
+					firstPlaying.value = true
+				}
+			}
 		}
 	}
 </script>

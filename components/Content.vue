@@ -29,6 +29,7 @@
 				{ ['first-block']: i === 0, ['last-block']: i === sections.length - 1 },
 			]"
 		></component>
+		<NuxtLink to="/" class="back">Back to Overview</NuxtLink>
 	</div>
 </template>
 
@@ -48,5 +49,11 @@
 		& > .last-block {
 			margin-bottom: 0 !important;
 		} */
+		& > .back {
+			display: block;
+			text-align: center;
+			width: calc(100vw - 2 * var(--space-m));
+			margin: var(--space-l) 0;
+		}
 	}
 </style>
