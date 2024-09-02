@@ -33,7 +33,7 @@
 		},
 		autoplay: {
 			type: Boolean,
-			default: false,
+			default: true,
 		},
 	})
 
@@ -204,18 +204,20 @@
 
 		.progress-bar {
 			position: absolute;
-			bottom: 10px;
+			bottom: 0;
 			left: 0;
 			right: 0;
 			height: 5px;
 			background-color: rgba(255, 255, 255, 0.3);
 			cursor: pointer;
+			width: calc(100vw - 2 * var(--space-m));
 		}
 
 		.progress {
 			height: 100%;
-			background-color: #ff0000;
+			background-color: #414141;
 			width: 0;
+			transition: width 0.1s ease;
 		}
 	}
 
