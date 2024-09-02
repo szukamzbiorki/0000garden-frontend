@@ -7,7 +7,7 @@
 		['smalltext', resolveComponent('LazyBlocksText')],
 		['bigtext', resolveComponent('LazyBlocksTextBig')],
 		['bigimg', resolveComponent('LazyBlocksCarousel')],
-		['video', resolveComponent('LazyBlocksVideo')],
+		['video', resolveComponent('LazyBlocksVideoCopy')],
 	])
 
 	const naming = new Map([

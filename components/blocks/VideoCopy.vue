@@ -53,6 +53,7 @@
 	const firstPlaying = ref(false)
 
 	const { height: windowHeight } = useWindowSize()
+	const progressPercentage = ref(0)
 
 	const { stop } = useIntersectionObserver(
 		el,
@@ -79,10 +80,10 @@
 		if (props.autoplay) {
 			muted.value = true
 			video.value.loop = 'loop'
-			// video.value.autoplay = 'autoplay'
 			video.value.muted = true
 		}
 		initVideo(props.src)
+		addVideoListeners()
 	})
 
 	onUnmounted(() => {
@@ -90,19 +91,37 @@
 			hls.destroy()
 		}
 		stop()
+		removeVideoListeners()
 	})
 
-	// watch(src.value, (v) => {
-	// 	initVideo(v)
-	// })
+	const addVideoListeners = () => {
+		if (video.value) {
+			video.value.addEventListener('timeupdate', updateProgress)
+		}
+	}
 
-	// watch(playing, (newPlaying) => {
-	// 	if (newPlaying) {
-	// 		video.value.play()
-	// 	} else {
-	// 		video.value.pause()
-	// 	}
-	// })
+	const removeVideoListeners = () => {
+		if (video.value) {
+			video.value.removeEventListener('timeupdate', updateProgress)
+		}
+	}
+
+	const updateProgress = () => {
+		if (video.value) {
+			progressPercentage.value =
+				(video.value.currentTime / video.value.duration) * 100
+		}
+	}
+
+	const seekVideo = (event) => {
+		if (video.value) {
+			const rect = event.target.getBoundingClientRect()
+			const clickX = event.clientX - rect.left
+			const width = rect.width
+			const percentage = clickX / width
+			video.value.currentTime = percentage * video.value.duration
+		}
+	}
 
 	const initVideo = (src) => {
 		if (!Hls.isSupported()) {
@@ -134,6 +153,12 @@
 		</div>
 		<div :class="['video-container']">
 			<video ref="video" playsinline />
+			<div class="progress-bar" @click="seekVideo">
+				<div
+					class="progress"
+					:style="{ width: `${progressPercentage}%` }"
+				></div>
+			</div>
 			<!-- @click="!autoplay ? (playing = false) : () => {}" -->
 			<!-- <Transition name="fade">
 				<Media
@@ -155,7 +180,7 @@
 <style lang="postcss" scoped>
 	.video-wrapper {
 		& > .controls {
-			width: calc(100vw-2 * var(--space-m));
+			width: calc(100vw - 2 * var(--space-m));
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
@@ -175,6 +200,22 @@
 			width: 100vw;
 			height: 100vh;
 			object-fit: cover;
+		}
+
+		.progress-bar {
+			position: absolute;
+			bottom: 10px;
+			left: 0;
+			right: 0;
+			height: 5px;
+			background-color: rgba(255, 255, 255, 0.3);
+			cursor: pointer;
+		}
+
+		.progress {
+			height: 100%;
+			background-color: #ff0000;
+			width: 0;
 		}
 	}
 

@@ -2,16 +2,20 @@
 	<div>
 		<div ref="swipe" class="swiper">
 			<div class="bar">
-				<div class="counter">
+				<div v-if="content.images?.length > 1" class="counter">
 					{{ slideNumber + '/' + content.images?.length }}
 				</div>
 			</div>
 			<div class="swiper-wrapper">
 				<div
+					v-if="content.images?.length > 1"
 					v-for="image in content.images"
 					:key="image._id"
 					class="swiper-slide"
 				>
+					<ElementMedia class="swiperimg" :medium="image"></ElementMedia>
+				</div>
+				<div v-else class="swiper-slide">
 					<ElementMedia class="swiperimg" :medium="image"></ElementMedia>
 				</div>
 			</div>
@@ -35,24 +39,26 @@
 	const slideNumber = ref(1)
 
 	onMounted(() => {
-		swiper.value = new Swiper(swipe.value, {
-			modules: [EffectFade],
-			grabCursor: true,
-			observer: true,
-			observeParents: true,
-			loop: true,
-			slidesPerView: 'auto',
-			autoHeight: true,
-			effect: 'fade',
-			fadeEffect: {
-				crossFade: true,
-			},
-			on: {
-				slideChange: (swiper) => {
-					slideNumber.value = swiper.realIndex + 1
+		if (props.content?.images.length > 1) {
+			swiper.value = new Swiper(swipe.value, {
+				modules: [EffectFade],
+				grabCursor: true,
+				observer: true,
+				observeParents: true,
+				loop: true,
+				slidesPerView: 'auto',
+				autoHeight: true,
+				effect: 'fade',
+				fadeEffect: {
+					crossFade: true,
 				},
-			},
-		})
+				on: {
+					slideChange: (swiper) => {
+						slideNumber.value = swiper.realIndex + 1
+					},
+				},
+			})
+		}
 	})
 
 	onUnmounted(() => {
