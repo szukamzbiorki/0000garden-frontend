@@ -19,41 +19,39 @@
 </script>
 
 <template>
-	<div class="blocks">
-		<component
-			v-for="(comp, i) in sections"
-			:is="components.get(comp._type)"
-			v-bind="comp._type == 'video' ? { ...comp } : { content: comp }"
-			:class="[
-				`${naming.get(comp._type)}-block`,
-				{ ['first-block']: i === 0, ['last-block']: i === sections.length - 1 },
-			]"
-		></component>
+	<div class="content">
+		<div class="blocks">
+			<component
+				v-for="(comp, i) in sections"
+				:is="components.get(comp._type)"
+				v-bind="comp._type == 'video' ? { ...comp } : { content: comp }"
+				:class="[
+					`${naming.get(comp._type)}-block`,
+					{
+						['first-block']: i === 0,
+						['last-block']: i === sections.length - 1,
+					},
+				]"
+			></component>
+		</div>
 		<NuxtLink to="/" class="back">Back to Overview</NuxtLink>
 	</div>
 </template>
 
 <style lang="postcss" scoped>
 	.blocks {
-		/* max-width: 100vw;
-		display: flex;
-		flex-direction: column;
-		gap: 4vw;
-		@media screen and (max-width: 600px) {
-			gap: 6vw;
+		& > *:not(.first-block) {
+			margin-top: 2rem;
+			&.image-block,
+			.video-block {
+				margin-top: 1rem;
+			}
 		}
-		& > * {
-			max-width: 100vw;
-		}
-
-		& > .last-block {
-			margin-bottom: 0 !important;
-		} */
-		& > .back {
-			display: block;
-			text-align: center;
-			width: calc(100vw - 2 * var(--space-m));
-			margin: var(--space-l) 0;
-		}
+	}
+	.back {
+		display: block;
+		text-align: center;
+		width: calc(100vw - 2 * var(--space-m));
+		margin: var(--space-l) 0;
 	}
 </style>

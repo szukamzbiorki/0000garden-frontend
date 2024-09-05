@@ -10,7 +10,7 @@
 					acre.download.asset.originalFilename
 				}}</a>
 			</div>
-			<Content class="blocks" :sections="acre.blocks"></Content>
+			<Content :sections="acre.blocks"></Content>
 		</div>
 	</div>
 </template>
