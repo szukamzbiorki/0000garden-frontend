@@ -1,5 +1,5 @@
 <template>
-	<div class="-type-l" :class="[content.font]">
+	<div class="-type-m">
 		{{ content.content }}
 	</div>
 </template>
@@ -11,8 +11,8 @@
 </script>
 
 <style lang="postcss" scoped>
-	.bigtext-block {
+	.specialtext-block {
 		hyphens: none;
-		padding: 0 var(--space-m);
+		color: var(--lightgrey);
 	}
 </style>

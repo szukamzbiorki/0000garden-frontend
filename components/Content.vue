@@ -12,7 +12,7 @@
 
 	const naming = new Map([
 		['smalltext', 'text'],
-		['bigtext', 'bigtext'],
+		['bigtext', 'specialtext'],
 		['bigimg', 'image'],
 		['video', 'video'],
 	])
