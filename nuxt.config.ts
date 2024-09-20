@@ -26,6 +26,6 @@ export default defineNuxtConfig({
 		projectId: '9tabryc1',
 		dataset: 'production',
 	},
-	modules: ['@nuxtjs/sanity', '@vueuse/nuxt'],
+	modules: ['@nuxtjs/sanity', '@vueuse/nuxt', '@sidebase/nuxt-session'],
 	ssr: false,
 })

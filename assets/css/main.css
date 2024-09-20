@@ -100,8 +100,8 @@ body,
 	overflow: scroll;
 }
 ::selection {
-	background: lightblue;
-	color: darkblue;
+	background: white;
+	color: black;
 }
 html::-webkit-scrollbar {
 	display: none;
