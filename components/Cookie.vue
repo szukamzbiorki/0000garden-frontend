@@ -22,7 +22,7 @@
 
 <style lang="postcss" scoped>
 	.cookie {
-		background-color: var(--grey);
+		background-color: var(--darkgrey);
 		color: white !important;
 		bottom: var(--space-m);
 		left: var(--space-m);
@@ -32,12 +32,14 @@
 		display: flex;
 		flex-direction: row;
 		gap: var(--space-l);
+		border-radius: 3px;
 		& > .close {
 			background-color: white;
 			padding: var(--space-s) var(--space-l);
 			height: fit-content;
-			color: var(--grey);
+			color: var(--darkgrey);
 			cursor: pointer;
+			border-radius: 3px;
 		}
 	}
 </style>

@@ -2,9 +2,18 @@
 	<div>
 		<div ref="swipe" class="swiper">
 			<div class="bar">
-				<div v-if="content.images?.length > 1" class="counter">
+				<div
+					v-if="content.images?.length > 1"
+					class="counter"
+					@click="swiper.slideNext()"
+				>
 					{{ slideNumber + '/' + content.images?.length }}
 				</div>
+			</div>
+			<div class="controls">
+				<div class="left" @click="swiper.slidePrev()"></div>
+				<div class="mid"></div>
+				<div class="right" @click="swiper.slideNext()"></div>
 			</div>
 			<div class="swiper-wrapper">
 				<div
@@ -104,6 +113,42 @@
 			display: flex;
 			flex-direction: row;
 			justify-content: center;
+			color: var(--lightgrey);
+			& > .counter {
+				cursor: pointer;
+				user-select: none;
+			}
+		}
+	}
+	.controls {
+		position: absolute;
+		width: 100%;
+		height: calc(100% - 2rem);
+		bottom: 0;
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		z-index: 6;
+		pointer-events: none;
+		@media screen and (max-width: 600px) {
+			display: none;
+		}
+
+		& > .left {
+			grid-column: 1/2;
+			cursor: pointer;
+			pointer-events: all;
+		}
+
+		& > .mid {
+			grid-column: 2/6;
+			cursor: grab;
+			pointer-events: none;
+		}
+
+		& > .right {
+			grid-column: 6/7;
+			cursor: pointer;
+			pointer-events: all;
 		}
 	}
 

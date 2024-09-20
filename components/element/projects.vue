@@ -58,11 +58,9 @@
 				<!-- {{ percentage }}% -->
 			</div>
 			<div class="title">
-				<a
-					v-if="slides[slideNumber - 1].link"
-					:href="slides[slideNumber - 1].link"
-					>{{ slides[slideNumber - 1].title }}</a
-				>
+				<a v-if="slides[slideNumber - 1].link" :href="slides[slideNumber - 1].link">{{
+					slides[slideNumber - 1].title
+				}}</a>
 				<span v-else>{{ slides[slideNumber - 1].title }}</span
 				>,
 				{{ slides[slideNumber - 1].year }}
@@ -138,8 +136,7 @@
 				on: {
 					slideChange: (swiper) => {
 						slideNumber.value = swiper.realIndex + 1
-						slideNumberInside.value =
-							swipers.value[slideNumber.value - 1].realIndex + 1
+						slideNumberInside.value = swipers.value[slideNumber.value - 1].realIndex + 1
 					},
 				},
 			})
@@ -147,8 +144,7 @@
 			slideRefs.value.forEach((slide, i) => {
 				const { top, bottom } = useElementBounding(slide)
 				watch(top, () => {
-					const ifMiddle =
-						top.value < height.value / 2 && bottom.value > height.value / 2
+					const ifMiddle = top.value < height.value / 2 && bottom.value > height.value / 2
 					if (ifMiddle) {
 						slideNumber.value = i + 1
 					}
@@ -214,7 +210,7 @@
 	.gallery {
 		width: 100vw;
 		height: 100vh;
-		background-color: var(--grey);
+		background-color: var(--lightgrey);
 		cursor: pointer;
 		z-index: -1;
 		transition: top 0.5s ease;
@@ -322,9 +318,7 @@
 								&.duo {
 									& > .swiperimg {
 										max-height: calc(100vh - 7 * var(--space-m));
-										max-width: calc(
-											(100vw - 3 * var(--space-m)) / 2
-										) !important;
+										max-width: calc((100vw - 3 * var(--space-m)) / 2) !important;
 										@media screen and (max-width: 640px) {
 											max-height: initial;
 											max-width: calc((100vw - 3 * var(--space-m))) !important;
@@ -335,9 +329,7 @@
 								&.trio {
 									& > .swiperimg {
 										max-height: calc(100vh - 7 * var(--space-m));
-										max-width: calc(
-											(100vw - 5 * var(--space-m)) / 3
-										) !important;
+										max-width: calc((100vw - 5 * var(--space-m)) / 3) !important;
 										@media screen and (max-width: 640px) {
 											max-height: initial;
 											max-width: calc((100vw - 3 * var(--space-m))) !important;

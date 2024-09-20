@@ -108,8 +108,7 @@
 
 	const updateProgress = () => {
 		if (video.value) {
-			progressPercentage.value =
-				(video.value.currentTime / video.value.duration) * 100
+			progressPercentage.value = (video.value.currentTime / video.value.duration) * 100
 		}
 	}
 
@@ -165,10 +164,7 @@
 		<div :class="['video-container']">
 			<video ref="video" playsinline />
 			<div class="progress-bar" @click="seekVideo">
-				<div
-					class="progress"
-					:style="{ width: `${progressPercentage}%` }"
-				></div>
+				<div class="progress" :style="{ width: `${progressPercentage}%` }"></div>
 			</div>
 			<!-- @click="!autoplay ? (playing = false) : () => {}" -->
 			<!-- <Transition name="fade">
@@ -195,6 +191,7 @@
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
+			color: var(--lightgrey);
 			& > * {
 				cursor: pointer;
 			}

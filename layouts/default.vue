@@ -19,12 +19,7 @@
 			</Transition>
 			<div class="top">
 				<div class="logo" @click="scaled = !scaled">
-					<img
-						class="logo-img"
-						src="/assets/garden-logo-ar.svg"
-						alt=""
-						srcset=""
-					/>
+					<img class="logo-img" src="/assets/garden-logo-ar.svg" alt="" srcset="" />
 				</div>
 			</div>
 		</header>
@@ -37,6 +32,7 @@
 		& > * {
 			position: fixed;
 			z-index: 30;
+			user-select: none;
 		}
 		& > .mailinglist {
 			top: var(--space-m);
@@ -55,7 +51,8 @@
 			gap: var(--space-xl);
 			& > .logo {
 				& > * {
-					height: 6rem;
+					height: 4rem;
+					pointer-events: none;
 				}
 			}
 		}

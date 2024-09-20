@@ -56,8 +56,8 @@ img {
 	--space-l: 22px;
 	--space-xl: 40px;
 	--border-radius: 0.3rem;
-	--grey: #eae9ea;
-	--darkgrey: #272727;
+	--lightgrey: #eae9ea;
+	--darkgrey: #ababab;
 }
 
 @media screen and (max-width: 640px) {
@@ -87,7 +87,7 @@ body {
 	font-weight: 600;
 	font-style: normal;
 	background-color: black;
-	color: var(--grey);
+	color: var(--darkgrey);
 	font-size: var(--type-m);
 	line-height: var(--type-m-leading);
 	overflow: hidden;
@@ -162,7 +162,7 @@ body {
 }
 
 a {
-	color: var(--grey);
+	color: var(--lightgrey);
 	text-decoration: none;
 }
 
