@@ -6,9 +6,13 @@
 				<div v-if="!mobile" class="date">{{ acre.date }}</div>
 				<div class="title">{{ acre.title }}</div>
 				<div v-if="!mobile" class="subject">{{ acre.subject }}</div>
-				<a v-if="!mobile" download :href="acre.download.asset.url" class="dl">{{
-					acre.download.asset.originalFilename
-				}}</a>
+				<a
+					v-if="!mobile && acre.download?.asset.url"
+					download
+					:href="acre.download.asset.url"
+					class="dl"
+					>{{ acre.download.asset.originalFilename }}</a
+				>
 			</div>
 			<Content :sections="acre.blocks"></Content>
 		</div>

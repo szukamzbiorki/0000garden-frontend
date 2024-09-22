@@ -1,6 +1,7 @@
 <template>
 	<NuxtLayout>
 		<NuxtPage></NuxtPage>
+		<Cookie></Cookie>
 	</NuxtLayout>
 </template>
 

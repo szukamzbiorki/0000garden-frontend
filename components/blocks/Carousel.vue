@@ -23,7 +23,7 @@
 					class="swiper-slide"
 				>
 					<ElementMedia
-						v-if="image._type == 'image'"
+						v-if="image?._type == 'image'"
 						class="swiperimg"
 						:medium="image"
 					></ElementMedia>
@@ -35,7 +35,7 @@
 				</div>
 				<div v-else class="swiper-slide">
 					<ElementMedia
-						v-if="image._type == 'image'"
+						v-if="image?._type == 'image'"
 						class="swiperimg"
 						:medium="image"
 					></ElementMedia>
