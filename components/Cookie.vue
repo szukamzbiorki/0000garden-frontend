@@ -46,12 +46,14 @@
 			padding: var(--space-m);
 			display: flex;
 			flex-direction: row;
+			align-items: center;
 			gap: var(--space-l);
 			border-radius: var(--border-radius);
 			@media screen and (max-width: 660px) {
 				bottom: initial !important;
 				top: var(--space-m);
 				flex-direction: column-reverse;
+				gap: var(--space-m);
 			}
 			& > .buttons {
 				display: flex;
