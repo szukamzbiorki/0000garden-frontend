@@ -113,10 +113,16 @@
 					display: flex;
 					flex-direction: column;
 					padding-left: var(--space-m);
+
 					& > .item {
+						color: var(--darkgrey);
+						border-bottom: var(--darkgrey) 1px solid;
+						&:hover {
+							color: var(--lightgrey);
+							border-bottom: var(--lightgrey) 1px solid;
+						}
 						display: grid;
 						grid-template-columns: repeat(12, 1fr);
-						border-bottom: var(--lightgrey) 1px solid;
 						@media screen and (max-width: 640px) {
 							grid-template-columns: repeat(4, 1fr);
 						}
