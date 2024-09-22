@@ -51,7 +51,7 @@
 			gap: var(--space-xl);
 			& > .logo {
 				& > * {
-					height: 4rem;
+					height: 3.5rem;
 					pointer-events: none;
 				}
 			}
