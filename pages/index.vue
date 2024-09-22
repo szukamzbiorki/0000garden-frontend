@@ -126,18 +126,24 @@
 					padding-left: var(--space-m);
 
 					& > .item {
-						color: var(--darkgrey);
 						border-bottom: var(--darkgrey) 1px solid;
+						color: var(--darkgrey);
+						& > * {
+							color: var(--darkgrey) !important;
+						}
 						&:hover {
-							color: var(--lightgrey);
+							color: var(--lightgrey) !important;
 							border-bottom: var(--lightgrey) 1px solid;
+							& > * {
+								color: var(--lightgrey) !important;
+							}
 						}
 						display: grid;
 						grid-template-columns: repeat(12, 1fr);
 						@media screen and (max-width: 640px) {
 							grid-template-columns: repeat(4, 1fr);
-							color: var(--lightgrey);
-							border-bottom: var(--lightgrey) 1px solid;
+							color: var(--lightgrey) !important;
+							border-bottom: var(--lightgrey) 1px solid !important;
 						}
 						gap: var(--space-m);
 						& > .no {
