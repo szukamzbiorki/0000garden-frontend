@@ -28,12 +28,12 @@
 
 <style lang="postcss" scoped>
 	.cookie-wrapper {
-		position: absolute;
+		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100vw;
 		height: 100vh;
-		backdrop-filter: blur(10px);
+		backdrop-filter: blur(4px);
 		z-index: 500;
 		& > .cookie {
 			position: absolute;
