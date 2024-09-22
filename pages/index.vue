@@ -126,7 +126,7 @@
 						@media screen and (max-width: 640px) {
 							grid-template-columns: repeat(4, 1fr);
 							color: var(--lightgrey);
-							border-bottom: var(--lightgrey) 1px solid;t
+							border-bottom: var(--lightgrey) 1px solid;
 						}
 						gap: var(--space-m);
 						& > .no {
