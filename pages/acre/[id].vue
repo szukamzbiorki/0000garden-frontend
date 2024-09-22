@@ -3,7 +3,7 @@
 		<div class="content">
 			<div class="bar">
 				<div class="no">{{ 1 }}</div>
-				<div v-if="!mobile" class="date">{{ acre.date }}</div>
+				<div v-if="!mobile" class="date">{{ formatDate(acre.date) }}</div>
 				<div class="title">{{ acre.title }}</div>
 				<div v-if="!mobile" class="subject">{{ acre.subject }}</div>
 				<a
@@ -40,6 +40,16 @@
 	)
 
 	const { mobile } = useScreenSize()
+	function formatDate(dateString) {
+		const date = new Date(dateString)
+
+		// Extract day, month, and year
+		const day = String(date.getDate()).padStart(2, '0') // Pad single digit day with leading zero
+		const month = String(date.getMonth() + 1).padStart(2, '0') // Pad single digit month with leading zero
+		const year = date.getFullYear()
+
+		return `${day}.${month}.${year}`
+	}
 </script>
 
 <style scoped lang="postcss">

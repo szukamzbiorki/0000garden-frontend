@@ -10,7 +10,7 @@
 						class="item"
 					>
 						<div class="no">{{ i + 1 }}</div>
-						<div v-if="!mobile" class="date">{{ acre.date }}</div>
+						<div v-if="!mobile" class="date">{{ formatDate(acre.date) }}</div>
 						<div class="title">{{ acre.title }}</div>
 						<div v-if="!mobile" class="subject">{{ acre.subject }}</div>
 						<a v-if="!mobile" download :href="acre.download.asset.url" class="dl">{{
@@ -28,7 +28,7 @@
 						class="item"
 					>
 						<div class="no">{{ i + 1 }}</div>
-						<div v-if="!mobile" class="date">{{ acre.date }}</div>
+						<div v-if="!mobile" class="date">{{ formatDate(acre.date) }}</div>
 						<div class="title">{{ acre.title }}</div>
 						<div v-if="!mobile" class="subject">{{ acre.subject }}</div>
 						<a
@@ -57,6 +57,17 @@
 	const scaled = ref(false)
 
 	console.log(data.value.acres)
+
+	function formatDate(dateString) {
+		const date = new Date(dateString)
+
+		// Extract day, month, and year
+		const day = String(date.getDate()).padStart(2, '0') // Pad single digit day with leading zero
+		const month = String(date.getMonth() + 1).padStart(2, '0') // Pad single digit month with leading zero
+		const year = date.getFullYear()
+
+		return `${day}.${month}.${year}`
+	}
 
 	const { y } = useWindowScroll()
 
