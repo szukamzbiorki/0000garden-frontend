@@ -186,7 +186,10 @@
 
 <style lang="postcss" scoped>
 	.video-wrapper {
+		position: relative;
 		& > .controls {
+			position: absolute;
+			top: -1rem;
 			width: calc(100vw - 2 * var(--space-m));
 			display: flex;
 			flex-direction: row;

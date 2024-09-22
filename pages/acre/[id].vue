@@ -35,7 +35,6 @@
 		sanity.fetch(query, { id: route.params.id })
 	)
 
-	console.log(acre.value.blocks[2])
 	const { mobile } = useScreenSize()
 </script>
 
