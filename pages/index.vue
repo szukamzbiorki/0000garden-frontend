@@ -1,7 +1,7 @@
 <template>
 	<div class="page">
 		<div class="archive" :class="{ scaled }">
-			<div class="emails">
+			<div v-if="data.mails[0]" class="emails">
 				<div class="title">Email Archive</div>
 				<div class="list">
 					<NuxtLink
@@ -19,7 +19,7 @@
 					</NuxtLink>
 				</div>
 			</div>
-			<div class="acres">
+			<div v-if="data.acres[0]" class="acres">
 				<div class="title">Acre Archive</div>
 				<div class="list">
 					<NuxtLink
