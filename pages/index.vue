@@ -48,8 +48,8 @@
 <script setup>
 	import 'animate.css'
 	const query = groq`{
-		'acres': *[_type == "acre"]{download{asset->}, ...},
-		'mails': *[_type == "mail"]{download{asset->}, ...}
+		'acres': *[_type == "acre"]{download{asset->}, ...}| order(orderRank),
+		'mails': *[_type == "mail"]{download{asset->}, ...}| order(orderRank)
 	}`
 	const sanity = useSanity()
 	const { data } = await useAsyncData(() => sanity.fetch(query))
