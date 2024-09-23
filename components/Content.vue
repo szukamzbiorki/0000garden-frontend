@@ -3,6 +3,8 @@
 		sections: Array,
 	})
 
+	console.log(props.sections)
+
 	const components = new Map([
 		['smalltext', resolveComponent('LazyBlocksText')],
 		['bigtext', resolveComponent('LazyBlocksTextBig')],

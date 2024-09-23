@@ -1,12 +1,8 @@
 <template>
 	<div>
 		<div ref="swipe" class="swiper">
-			<div class="bar">
-				<div
-					v-if="content.images?.length > 1"
-					class="counter"
-					@click="swiper.slideNext()"
-				>
+			<div v-if="content.images?.length > 1" class="bar">
+				<div class="counter" @click="swiper.slideNext()">
 					{{ slideNumber + '/' + content.images?.length }}
 				</div>
 			</div>
@@ -30,19 +26,19 @@
 					<BlocksVideoCopy
 						v-else
 						v-bind="{ ...image }"
-						class="swiperimg"
+						class="swiperimg vid"
 					></BlocksVideoCopy>
 				</div>
 				<div v-else class="swiper-slide">
 					<ElementMedia
-						v-if="image?._type == 'image'"
-						class="swiperimg"
-						:medium="image"
+						v-if="content.images[0]?._type == 'image'"
+						class="swiperimg img"
+						:medium="content.images[0]"
 					></ElementMedia>
 					<BlocksVideoCopy
 						v-else
-						v-bind="{ ...image }"
-						class="swiperimg"
+						v-bind="{ ...content.images[0] }"
+						class="swiperimg vid"
 					></BlocksVideoCopy>
 				</div>
 			</div>
@@ -54,6 +50,8 @@
 	const props = defineProps({
 		content: Object,
 	})
+
+	console.log(props.content.images.length)
 
 	import Swiper from 'swiper'
 	import 'swiper/css'
