@@ -83,7 +83,9 @@
 		}
 	}
 	.progress {
-		height: 20px;
+        cursor: pointer;
+		transition: all ease 0.4s;
+		height: 3px;
 		background: linear-gradient(
 			to right,
 			var(--lightgrey) 0%,
