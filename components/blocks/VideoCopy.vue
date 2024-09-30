@@ -37,7 +37,6 @@
 		},
 	})
 
-	const { mobile } = useScreenSize()
 	const video = ref()
 	const el = useCurrentElement()
 	let hls
@@ -166,21 +165,7 @@
 			<div class="progress-bar" @click="seekVideo">
 				<div class="progress" :style="{ width: `${progressPercentage}%` }"></div>
 			</div>
-			<!-- @click="!autoplay ? (playing = false) : () => {}" -->
-			<!-- <Transition name="fade">
-				<Media
-					:medium="poster"
-					v-if="poster"
-					v-show="!firstPlaying"
-					@click="playing = true"
-					class="poster"
-				/>
-			</Transition> -->
 		</div>
-
-		<!-- <ElementsText tag="figcaption" v-if="showCaption && caption">
-			<div v-html="caption" />
-		</ElementsText> -->
 	</div>
 </template>
 
@@ -208,7 +193,7 @@
 			cursor: pointer;
 		}
 		& > * {
-			width: 100vw;
+			width: 100%;
 			height: 100vh;
 			object-fit: cover;
 		}

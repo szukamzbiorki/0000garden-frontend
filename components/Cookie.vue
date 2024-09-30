@@ -1,9 +1,9 @@
 <template>
 	<transition name="fade">
-		<div v-if="session.cookie" class="cookie-wrapper">
+		<div v-show="cookie !== 'hide'" class="cookie-wrapper">
 			<div class="cookie">
 				<div class="text">
-					Garden uses cookies and similar technologies to provide you with a better
+					Garden us	es cookies and similar technologies to provide you with a better
 					experience. I feel sick. Quite literally. I feel my body is processing
 					something. Possibly there is an underlying psychological thing that I haven't
 					worked through yet. Anyway, I feel like I am becoming stupid. All I do is sit
@@ -12,8 +12,8 @@
 					information.
 				</div>
 				<div class="buttons">
-					<div @click="update({ cookie: false })" class="close">Accept</div>
-					<div @click="update({ cookie: false })" class="close">Reject</div>
+					<div @click="handleClick" class="close">Accept</div>
+					<div @click="handleClick" class="close">Reject</div>
 				</div>
 			</div>
 		</div>
@@ -21,9 +21,10 @@
 </template>
 
 <script setup>
-	const { session, update } = await useSession()
-	await update({ cookie: true })
-	console.log(session)
+	const cookie = useCookie('garden-cookies', { sameSite: 'strict', maxAge: 60 * 60 * 24 })
+	function handleClick() {
+		cookie.value = 'hide'
+	}
 </script>
 
 <style lang="postcss" scoped>
