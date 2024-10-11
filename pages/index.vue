@@ -1,73 +1,13 @@
 <template>
-	<div class="page">
-		<div class="archive" :class="{ scaled }">
-			<div v-if="data.mails[0]" class="emails">
-				<div class="title">Email Archive</div>
-				<div class="list">
-					<NuxtLink
-						:to="'email/' + acre.slug.current"
-						v-for="(acre, i) in data.mails"
-						class="item"
-					>
-						<div class="no">{{ i + 1 }}</div>
-						<div v-if="!mobile" class="date">{{ formatDate(acre.date) }}</div>
-						<div class="title">{{ acre.title }}</div>
-						<div v-if="!mobile" class="subject">{{ acre.subject }}</div>
-						<a v-if="!mobile" download :href="acre.download.asset.url" class="dl">{{
-							acre.download.asset.originalFilename
-						}}</a>
-					</NuxtLink>
-				</div>
-			</div>
-			<div v-if="data.acres[0]" class="acres">
-				<div class="title">Acre Archive</div>
-				<div class="list">
-					<NuxtLink
-						:to="'acre/' + acre.slug.current"
-						v-for="(acre, i) in data.acres"
-						class="item"
-					>
-						<div class="no">{{ i + 1 }}</div>
-						<div v-if="!mobile" class="date">{{ formatDate(acre.date) }}</div>
-						<div class="title">{{ acre.title }}</div>
-						<div v-if="!mobile" class="subject">{{ acre.subject }}</div>
-						<a
-							v-if="!mobile && acre.download?.asset.url"
-							download
-							:href="acre.download.asset.url"
-							class="dl"
-							>{{ acre.download.asset.originalFilename }}</a
-						>
-					</NuxtLink>
-				</div>
-			</div>
-		</div>
+	<div class="page" :class="[{ active: active }]">
+		<PagesSignUp></PagesSignUp>
+		<PagesArchive></PagesArchive>
 	</div>
 </template>
 
 <script setup>
 	import 'animate.css'
-	const query = groq`{
-		'acres': *[_type == "acre"]{download{asset->}, ...}| order(orderRank),
-		'mails': *[_type == "mail"]{download{asset->}, ...}| order(orderRank)
-	}`
-	const sanity = useSanity()
-	const { data } = await useAsyncData(() => sanity.fetch(query))
 	const { mobile } = useScreenSize()
-	const scaled = ref(false)
-
-	console.log(data.value.acres)
-
-	function formatDate(dateString) {
-		const date = new Date(dateString)
-
-		// Extract day, month, and year
-		const day = String(date.getDate()).padStart(2, '0') // Pad single digit day with leading zero
-		const month = String(date.getMonth() + 1).padStart(2, '0') // Pad single digit month with leading zero
-		const year = date.getFullYear()
-
-		return `${day}.${month}.${year}`
-	}
 
 	const { y } = useWindowScroll()
 
@@ -76,19 +16,19 @@
 
 	const passed = ref(false)
 
-	const active = ref(false)
-
 	onMounted(() => {
 		setTimeout(() => {
 			passed.value = true
 		}, 3500)
 	})
 
-	watch(y, (newY) => {
-		if (newY > 0) {
-			active.value = true
-		}
-	})
+	const active = computed(() => (y.value > 0 ? true : false))
+
+	// watch(y, (newY) => {
+	// 	if (newY > 0) {
+	// 		active.value = true
+	// 	}
+	// })
 
 	const showImage = computed(() => {
 		return active.value || passed.value
@@ -101,82 +41,43 @@
 
 <style scoped lang="postcss">
 	.page {
+		&.active {
+			& > .signup {
+				opacity: 0;
+				top: -80vh;
+				pointer-events: none;
+			}
+			& > .archive {
+				top: 10vh;
+				opacity: 1;
+			}
+		}
 		& > * {
 			position: absolute;
-			top: calc(6rem + 2 * var(--space-m));
-			left: var(--space-m);
+			transition: top ease 0.5s, opacity 0.5s ease;
+		}
+
+		& > .signup {
+			opacity: 1;
+			top: 0;
+			height: 100vh;
+			z-index: 60;
+			/* mask-image: -webkit-gradient(
+				linear,
+				left 30%,
+				left bottom,
+				from(rgba(0, 0, 0, 1)),
+				to(rgba(0, 0, 0, 0))
+			); */
 		}
 		& > .archive {
-			width: calc(100vw - 2 * var(--space-m));
-			display: flex;
-			flex-direction: column;
-			gap: var(--space-xl);
-			transition: all 0.3s ease;
-			transform-origin: top left;
-			&.scaled {
-				transform: scale(0.25);
-			}
-			& > * {
-				& > .title {
-					margin-bottom: var(--space-m);
-				}
-				& > .list {
-					display: flex;
-					flex-direction: column;
-					padding-left: var(--space-m);
+			opacity: 0;
+			top: 80vh;
+			left: 0;
+		}
 
-					& > .item {
-						border-bottom: var(--darkgrey) 1px solid;
-						color: var(--darkgrey);
-						& > * {
-							color: var(--darkgrey) !important;
-						}
-						&:hover {
-							color: var(--lightgrey) !important;
-							border-bottom: var(--lightgrey) 1px solid;
-							& > * {
-								color: var(--lightgrey) !important;
-							}
-						}
-						display: grid;
-						grid-template-columns: repeat(12, 1fr);
-						@media screen and (max-width: 640px) {
-							grid-template-columns: repeat(4, 1fr);
-							color: var(--lightgrey) !important;
-							border-bottom: var(--lightgrey) 1px solid !important;
-						}
-						gap: var(--space-m);
-						& > .no {
-							&::before {
-								content: 'Number: ';
-							}
-						}
-						& > .title {
-							grid-column: span 3;
-							&::before {
-								content: 'Title: ';
-							}
-						}
-						& > .dl {
-							grid-column: span 3;
-							&::before {
-								content: 'Download: ';
-							}
-						}
-						& > .subject {
-							grid-column: span 3;
-							&::before {
-								content: 'Subject: ';
-							}
-						}
-						& > .date {
-							&::before {
-								content: 'Date: ';
-							}
-						}
-					}
-				}
-			}
+		@media screen and (min-height: 650px) {
+			min-height: calc(100vh + 1px);
 		}
 	}
 </style>

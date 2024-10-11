@@ -29,7 +29,9 @@
 		visible,
 		(v) => {
 			muted.value = true
+			// if (theme != 'fullscreen') {
 			playing.value = v
+			// }
 		},
 		{ immediate: true }
 	)
@@ -50,8 +52,8 @@
 </script>
 
 <template>
-	<div class="video" :style="{ '--progress': `${progress * 100}%` }">
-		<div class="controls">
+	<div class="video" :class="[theme]" :style="{ '--progress': `${progress * 100}%` }">
+		<div v-if="theme == 'default'" class="controls">
 			<div @click="playing = !playing">
 				{{ playing ? 'Pause' : 'Play' }}
 			</div>
@@ -65,13 +67,27 @@
 			playsinline
 			title=""
 			@click="playing = !playing"
-			:loop="theme === 'homepage'"
+			loop="true"
 		/>
-		<div class="progress" @click="seek" />
+		<div v-if="theme == 'default'" class="progress" @click="seek" />
 	</div>
 </template>
 
 <style lang="postcss" scoped>
+	.video {
+		&.fullscreen {
+			background-color: white;
+
+			&:not(.autoplay) > * {
+				cursor: pointer;
+			}
+			& > * {
+				width: 100vw;
+				height: 100vh;
+				object-fit: cover;
+			}
+		}
+	}
 	.controls {
 		display: grid;
 		grid-auto-flow: column;
@@ -83,7 +99,7 @@
 		}
 	}
 	.progress {
-        cursor: pointer;
+		cursor: pointer;
 		transition: all ease 0.4s;
 		height: 3px;
 		background: linear-gradient(

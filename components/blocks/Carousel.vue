@@ -23,11 +23,11 @@
 						class="swiperimg"
 						:medium="image"
 					></ElementMedia>
-					<BlocksVideoCopy
+					<ElementsVideo
 						v-else
 						v-bind="{ ...image }"
 						class="swiperimg vid"
-					></BlocksVideoCopy>
+					></ElementsVideo>
 				</div>
 				<div v-else class="swiper-slide">
 					<ElementMedia
@@ -35,11 +35,11 @@
 						class="swiperimg img"
 						:medium="content.images[0]"
 					></ElementMedia>
-					<BlocksVideoCopy
+					<ElementsVideo
 						v-else
 						v-bind="{ ...content.images[0] }"
 						class="swiperimg vid"
-					></BlocksVideoCopy>
+					></ElementsVideo>
 				</div>
 			</div>
 		</div>

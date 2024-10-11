@@ -13,7 +13,7 @@
 <template>
 	<div :class="['layout', { ready }]">
 		<header>
-			<a href="https://0001.garden" class="mailinglist">Mailinglist</a>
+			<!-- <a href="https://0001.garden" class="mailinglist">Mailinglist</a> -->
 			<Transition name="fade">
 				<NuxtLink to="/" v-if="route.path != '/'" class="back">Back</NuxtLink>
 			</Transition>

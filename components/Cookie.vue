@@ -3,7 +3,7 @@
 		<div v-show="cookie !== 'hide'" class="cookie-wrapper">
 			<div class="cookie">
 				<div class="text">
-					Garden us	es cookies and similar technologies to provide you with a better
+					Garden uses cookies and similar technologies to provide you with a better
 					experience. I feel sick. Quite literally. I feel my body is processing
 					something. Possibly there is an underlying psychological thing that I haven't
 					worked through yet. Anyway, I feel like I am becoming stupid. All I do is sit
