@@ -3,13 +3,7 @@
 		<div v-show="cookie !== 'hide'" class="cookie-wrapper">
 			<div class="cookie">
 				<div class="text">
-					Garden uses cookies and similar technologies to provide you with a better
-					experience. I feel sick. Quite literally. I feel my body is processing
-					something. Possibly there is an underlying psychological thing that I haven't
-					worked through yet. Anyway, I feel like I am becoming stupid. All I do is sit
-					behind this desk. The only interaction I have is with my computer. I don't know.
-					I can't even call it interaction. Further details can be found in the privacy
-					information.
+					<SanityContent :blocks="data.home.cookie" :serializers="customSerializers" />
 				</div>
 				<div class="buttons">
 					<div @click="handleClick" class="close">Accept</div>
@@ -21,9 +15,54 @@
 </template>
 
 <script setup>
-	const cookie = useCookie('garden-cookies', { sameSite: 'strict', maxAge: 60 * 60 * 24 })
+	const query = groq`{
+		'home': *[_type == "home"]{cookie, ...}[0]
+	}`
+	const sanity = useSanity()
+	const { data } = await useAsyncData(() => sanity.fetch(query))
+
+	console.log(data.value.home.cookie)
+
+	const cookie = useCookie('garden-cookies', { sameSite: 'strict', maxAge: 60 * 60 * 5 })
+
 	function handleClick() {
 		cookie.value = 'hide'
+	}
+
+	const customSerializers = {
+		marks: {
+			link: (value) => {
+				console.log(value)
+				const isExternal = value.href && !value.href.startsWith('/')
+
+				if (isExternal) {
+					return h(
+						'a',
+						{
+							href: value.href || '#', // Fallback URL
+							target: value.target, // Open external links in a new tab
+							rel: isExternal ? 'noopener noreferrer' : null, // Security for external links
+							class: 'inline-link',
+						},
+						[
+							value.textcontent, // Render the children (text inside the link)
+						]
+					)
+				} else {
+					const linkH = resolveComponent('NuxtLink')
+					return h(
+						linkH,
+						{
+							to: value.href || '#', // Fallback URL
+							target: value.target, // Open external links in a new tab
+							rel: isExternal ? 'noopener noreferrer' : null, // Security for external links
+							class: 'inline-link',
+						},
+						() => value.textcontent
+					)
+				}
+			},
+		},
 	}
 </script>
 
@@ -43,11 +82,12 @@
 			bottom: var(--space-m) !important;
 			left: var(--space-m);
 			bottom: var(--space-m) !important;
-			width: calc(100vw - 2 * var(--space-m));
+			width: var(--width-m);
 			padding: var(--space-m);
 			display: flex;
 			flex-direction: row;
 			align-items: center;
+			justify-content: space-between;
 			gap: var(--space-l);
 			border-radius: var(--border-radius);
 			@media screen and (max-width: 660px) {

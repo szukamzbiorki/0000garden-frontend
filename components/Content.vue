@@ -53,7 +53,7 @@
 	.back {
 		display: block;
 		text-align: center;
-		width: calc(100vw - 2 * var(--space-m));
+		width: var(--width-m);
 		margin: var(--space-l) 0;
 	}
 </style>

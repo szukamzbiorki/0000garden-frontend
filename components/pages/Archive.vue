@@ -72,7 +72,7 @@
 			left: var(--space-m);
 		}
 		& > .archive {
-			width: calc(100vw - 2 * var(--space-m));
+			width: var(--width-m);
 			display: flex;
 			flex-direction: column;
 			gap: var(--space-xl);

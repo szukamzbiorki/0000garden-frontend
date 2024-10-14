@@ -1,5 +1,5 @@
 <template>
-	<div class="page">
+	<div class="acre">
 		<div class="content">
 			<div class="bar">
 				<div class="no">{{ 1 }}</div>
@@ -53,10 +53,12 @@
 </script>
 
 <style scoped lang="postcss">
-	.page {
+	.acre {
+		position: absolute;
+		left: var(--space-m);
 		top: calc(6rem + 2 * var(--space-m));
 		& > .content {
-			width: calc(100vw - 2 * var(--space-m));
+			width: var(--width-m);
 			& > .bar {
 				display: grid;
 				grid-template-columns: repeat(12, 1fr);

@@ -291,9 +291,9 @@
 								}
 								& > .swiperimg {
 									max-height: calc(100vh - 7 * var(--space-m));
-									max-width: calc(100vw - 2 * var(--space-m)) !important;
+									max-width: var(--width-m) !important;
 									@media screen and (max-width: 640px) {
-										width: calc(100vw - 2 * var(--space-m)) !important;
+										width: var(--width-m) !important;
 										height: auto;
 										max-height: initial;
 									}

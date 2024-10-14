@@ -58,6 +58,7 @@ img {
 	--border-radius: 0.3rem;
 	--lightgrey: #eae9ea;
 	--darkgrey: #ababab;
+	--width-m: calc(100vw - 2 * var(--space-m));
 }
 
 @media screen and (max-width: 640px) {

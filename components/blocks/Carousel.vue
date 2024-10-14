@@ -43,6 +43,9 @@
 				</div>
 			</div>
 		</div>
+		<div v-if="content.caption" class="caption">
+			<SanityContent :blocks="content.caption" :serializers="customSerializers" />
+		</div>
 	</div>
 </template>
 
@@ -50,6 +53,44 @@
 	const props = defineProps({
 		content: Object,
 	})
+
+	console.log('this is content', props.content)
+
+	const customSerializers = {
+		marks: {
+			link: (value) => {
+				console.log(value)
+				const isExternal = value.href && !value.href.startsWith('/')
+
+				if (isExternal) {
+					return h(
+						'a',
+						{
+							href: value.href || '#', // Fallback URL
+							target: value.target, // Open external links in a new tab
+							rel: isExternal ? 'noopener noreferrer' : null, // Security for external links
+							class: 'inline-link',
+						},
+						[
+							value.textcontent, // Render the children (text inside the link)
+						]
+					)
+				} else {
+					const linkH = resolveComponent('NuxtLink')
+					return h(
+						linkH,
+						{
+							to: value.href || '#', // Fallback URL
+							target: value.target, // Open external links in a new tab
+							rel: isExternal ? 'noopener noreferrer' : null, // Security for external links
+							class: 'inline-link',
+						},
+						() => value.textcontent
+					)
+				}
+			},
+		},
+	}
 
 	console.log(props.content.images.length)
 

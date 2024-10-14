@@ -35,6 +35,16 @@
 	}`
 	const sanity = useSanity()
 	const { data } = await useAsyncData(() => sanity.fetch(query))
+
+	async function handleSubmit(e) {
+		const email = e.target.email.value
+		const requestOptions = {
+			method: 'POST',
+			body: { email },
+		}
+		const { response } = await $fetch('/api/submit', requestOptions)
+		console.log(response)
+	}
 </script>
 
 <style scoped lang="postcss">
@@ -52,7 +62,7 @@
 			user-select: none;
 
 			@media screen and (max-width: 640px) {
-				width: calc(100vw - 2 * var(--space-m));
+				width: var(--width-m);
 			}
 
 			& > .logo {

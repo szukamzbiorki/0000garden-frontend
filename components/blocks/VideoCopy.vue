@@ -175,7 +175,7 @@
 		& > .controls {
 			position: absolute;
 			top: -1rem;
-			width: calc(100vw - 2 * var(--space-m));
+			width: var(--width-m);
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
@@ -206,7 +206,7 @@
 			height: 5px;
 			background-color: rgba(255, 255, 255, 0.3);
 			cursor: pointer;
-			width: calc(100vw - 2 * var(--space-m));
+			width: var(--width-m);
 		}
 
 		.progress {

@@ -1,7 +1,11 @@
 <script setup lang="ts">
 	import Hls from 'hls.js'
 
-	const { src, theme = 'default' } = defineProps<{ src: string; theme?: string }>()
+	const {
+		src,
+		theme = 'default',
+		ratio = {},
+	} = defineProps<{ src: string; theme?: string; ratio?: Object }>()
 
 	let hls
 
@@ -24,6 +28,12 @@
 	const progress = computed(() => currentTime.value / duration.value)
 
 	const visible = useElementVisibility(videoEl)
+
+	const ratioReady = computed(() => {
+		if ('width' in ratio && 'height' in ratio) {
+			return `${ratio.width}/${ratio.height}`
+		}
+	})
 
 	watch(
 		visible,
@@ -49,10 +59,20 @@
 			videoEl.value.currentTime = percentage * videoEl.value.duration
 		}
 	}
+
+	function handleClick() {
+		if (theme == 'default') {
+			playing.value = !playing.value
+		}
+	}
 </script>
 
 <template>
-	<div class="video" :class="[theme]" :style="{ '--progress': `${progress * 100}%` }">
+	<div
+		class="video"
+		:class="[theme]"
+		:style="{ '--progress': `${progress * 100}%`, '--ratio': `${ratioReady}` }"
+	>
 		<div v-if="theme == 'default'" class="controls">
 			<div @click="playing = !playing">
 				{{ playing ? 'Pause' : 'Play' }}
@@ -66,8 +86,9 @@
 			:src
 			playsinline
 			title=""
-			@click="playing = !playing"
+			@click="handleClick()"
 			loop="true"
+			class="vid"
 		/>
 		<div v-if="theme == 'default'" class="progress" @click="seek" />
 	</div>
@@ -109,5 +130,8 @@
 			black var(--progress),
 			black 100%
 		);
+	}
+	.vid {
+		aspect-ratio: var(--ratio);
 	}
 </style>
