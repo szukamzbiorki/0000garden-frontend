@@ -39,9 +39,7 @@
 		visible,
 		(v) => {
 			muted.value = true
-			// if (theme != 'fullscreen') {
 			playing.value = v
-			// }
 		},
 		{ immediate: true }
 	)
@@ -60,7 +58,8 @@
 		}
 	}
 
-	function handleClick() {
+	function handleClick(event: MouseEvent) {
+		event.stopPropagation()
 		if (theme == 'default') {
 			playing.value = !playing.value
 		}
@@ -86,9 +85,10 @@
 			:src
 			playsinline
 			title=""
-			@click="handleClick()"
+			@click.stop="handleClick"
 			loop="true"
 			class="vid"
+			:style="{ 'aspect-ratio': ratioReady || '16/9' }"
 		/>
 		<div v-if="theme == 'default'" class="progress" @click="seek" />
 	</div>
@@ -130,8 +130,5 @@
 			black var(--progress),
 			black 100%
 		);
-	}
-	.vid {
-		aspect-ratio: var(--ratio);
 	}
 </style>

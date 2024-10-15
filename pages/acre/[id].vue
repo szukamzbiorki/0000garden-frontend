@@ -16,6 +16,11 @@
 			</div>
 			<Content :sections="acre.blocks"></Content>
 		</div>
+		<div class="info" v-if="acre.contributor">
+			<NuxtLink to="/info" class="additional"
+				>Contributed by {{ acre.contributor }}</NuxtLink
+			>
+		</div>
 	</div>
 </template>
 
@@ -57,6 +62,13 @@
 		position: absolute;
 		left: var(--space-m);
 		top: calc(6rem + 2 * var(--space-m));
+
+		& > .info {
+			position: fixed;
+			bottom: var(--space-m);
+			right: var(--space-m);
+			z-index: 70;
+		}
 		& > .content {
 			width: var(--width-m);
 			& > .bar {

@@ -118,13 +118,16 @@
 		if (props.content?.images.length > 1) {
 			swiper.value = new Swiper(swipe.value, {
 				modules: [EffectFade],
-				grabCursor: true,
+				grabCursor: false,
 				observer: true,
 				observeParents: true,
 				loop: true,
 				slidesPerView: 'auto',
 				autoHeight: true,
 				effect: 'fade',
+				preventClicks: true,
+				preventClicksPropagation: true,
+				speed: 400,
 				fadeEffect: {
 					crossFade: true,
 				},
@@ -180,7 +183,7 @@
 
 		& > .mid {
 			grid-column: 2/6;
-			cursor: grab;
+			cursor: normal;
 			pointer-events: none;
 		}
 

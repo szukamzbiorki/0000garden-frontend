@@ -1,7 +1,19 @@
 <template>
 	<div class="page" :class="[{ active: active }]">
-		<PagesSignUp></PagesSignUp>
+		<!-- <PagesSignUp></PagesSignUp> -->
 		<PagesArchive></PagesArchive>
+		<Transition name="fade">
+			<div class="info" v-show="active && !mobile">
+				<NuxtLink to="/info" class="additional">Additional Information</NuxtLink>
+				<NuxtLink to="mailto:info@0000.garden" class="additional"
+					>info@0000.garden</NuxtLink
+				>
+				<div class="powered">
+					Garden is powered by
+					<NuxtLink to="https://00316.agency" class="additional">00316.agency</NuxtLink>
+				</div>
+			</div>
+		</Transition>
 	</div>
 </template>
 
@@ -24,12 +36,6 @@
 
 	const active = computed(() => (y.value > 0 ? true : false))
 
-	// watch(y, (newY) => {
-	// 	if (newY > 0) {
-	// 		active.value = true
-	// 	}
-	// })
-
 	const showImage = computed(() => {
 		return active.value || passed.value
 	})
@@ -41,20 +47,30 @@
 
 <style scoped lang="postcss">
 	.page {
-		&.active {
-			& > .signup {
-				opacity: 0;
-				top: -80vh;
-				pointer-events: none;
-			}
-			& > .archive {
-				top: 10vh;
-				opacity: 1;
+		@media screen and (min-width: 640px) {
+			&.active {
+				& > .signup {
+					opacity: 0;
+					top: -80vh;
+					pointer-events: none;
+				}
+				& > .archive {
+					top: 10vh;
+					opacity: 1;
+				}
 			}
 		}
 		& > * {
 			position: absolute;
 			transition: top ease 0.5s, opacity 0.5s ease;
+		}
+
+		& > .info {
+			bottom: var(--space-m);
+			right: var(--space-m);
+			display: flex;
+			flex-direction: row;
+			gap: var(--space-l);
 		}
 
 		& > .signup {

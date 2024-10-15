@@ -13,7 +13,6 @@ export default defineEventHandler(async (event) => {
 				'X-Bin-Name': body.email,
 			},
 		})
-		console.log(body.email)
 		return response
 	} catch (error) {
 		console.log('Error fetching data:', error.message, error.stack)

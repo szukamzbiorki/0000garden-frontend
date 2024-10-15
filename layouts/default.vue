@@ -42,6 +42,7 @@
 			top: var(--space-m);
 			left: var(--space-m);
 		}
+
 		& > .top {
 			top: var(--space-m);
 			left: 50vw;

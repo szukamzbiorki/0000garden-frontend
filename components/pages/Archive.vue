@@ -1,35 +1,19 @@
 <template>
 	<div class="archive" :class="{ scaled }">
-		<div v-if="data.mails[0]" class="emails">
-			<div class="title">Email Archive</div>
-			<div class="list">
-				<NuxtLink
-					:to="'email/' + acre.slug.current"
-					v-for="(acre, i) in data.mails"
-					class="item"
-				>
-					<div class="no">{{ i + 1 }}</div>
-					<div v-if="!mobile" class="date">{{ formatDate(acre.date) }}</div>
-					<div class="title">{{ acre.title }}</div>
-					<div v-if="!mobile" class="subject">{{ acre.subject }}</div>
-					<a v-if="!mobile" download :href="acre.download.asset.url" class="dl">{{
-						acre.download.asset.originalFilename
-					}}</a>
-				</NuxtLink>
-			</div>
-		</div>
 		<div v-if="data.acres[0]" class="acres">
 			<div class="title">Acre Archive</div>
 			<div class="list">
-				<NuxtLink
+				<component
 					:to="'acre/' + acre.slug.current"
+					:is="acre.upcoming ? 'div' : NuxtLink"
 					v-for="(acre, i) in data.acres"
 					class="item"
+					:class="{ upcoming: acre.upcoming }"
 				>
 					<div class="no">{{ i + 1 }}</div>
 					<div class="date">{{ formatDate(acre.date) }}</div>
 					<div class="title">{{ acre.title }}</div>
-					<div v-if="!mobile" class="subject">{{ acre.subject }}</div>
+					<div v-if="true" class="subject">{{ acre.subject }}</div>
 					<a
 						v-if="!mobile && acre.download?.asset.url"
 						download
@@ -37,7 +21,10 @@
 						class="dl"
 						>{{ acre.download.asset.originalFilename }}</a
 					>
-				</NuxtLink>
+					<div v-if="!mobile && acre.contributor" class="contributor">
+						{{ acre.contributor }}
+					</div>
+				</component>
 			</div>
 		</div>
 	</div>
@@ -53,6 +40,8 @@
 	const { data } = await useAsyncData(() => sanity.fetch(query))
 	const { mobile } = useScreenSize()
 	const scaled = ref(false)
+
+	const NuxtLink = resolveComponent('NuxtLink')
 
 	function formatDate(dateString) {
 		const date = new Date(dateString)
@@ -96,6 +85,9 @@
 						& > * {
 							color: var(--darkgrey) !important;
 						}
+						&.upcoming {
+							filter: blur(2px);
+						}
 						&:hover {
 							color: var(--lightgrey) !important;
 							border-bottom: var(--lightgrey) 1px solid;
@@ -122,11 +114,20 @@
 							&::before {
 								content: 'Title: ';
 							}
+							@media screen and (max-width: 640px) {
+								grid-column: 1/-1;
+							}
 						}
 						& > .dl {
-							grid-column: span 3;
+							grid-column: span 2;
 							&::before {
 								content: 'Download: ';
+							}
+						}
+						& > .contributor {
+							grid-column: span 2;
+							&::before {
+								content: 'Contributor: ';
 							}
 						}
 						& > .subject {
@@ -134,14 +135,27 @@
 							&::before {
 								content: 'Subject: ';
 							}
+							@media screen and (max-width: 640px) {
+								grid-column: 1 / -1;
+							}
 						}
 						& > .date {
 							&::before {
 								content: 'Date: ';
 							}
 							@media screen and (max-width: 640px) {
-								grid-column: span 2;
+								grid-column: -2 / span 1;
+								justify-self: end;
+								&::before {
+									content: '';
+								}
 							}
+						}
+					}
+					& > a:visited {
+						border-color: var(--darkergrey) !important;
+						& > * {
+							color: var(--darkergrey) !important;
 						}
 					}
 				}

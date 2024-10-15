@@ -56,24 +56,18 @@
 			font-family: inherit;
 			margin-bottom: 1rem;
 		}
-	}
-</style>
 
-<style lang="postcss" scoped>
-	.text-block {
-		& > p {
+		& > blockquote {
 			max-width: calc(100vw / 12 * 5);
 			text-wrap: wrap;
 			font-family: inherit;
 			margin-bottom: 1rem;
-			&.emphasised {
-				padding-left: calc(100vw / 12 * 1);
-				font-style: italic;
-			}
+			padding-left: calc(100vw / 12 * 1);
+			font-style: italic;
 		}
-
 		@media screen and (max-width: 600px) {
-			& > .block {
+			& > p,
+			blockquote {
 				max-width: var(--width-m);
 				text-wrap: wrap;
 				font-family: inherit;

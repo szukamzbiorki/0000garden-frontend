@@ -58,6 +58,7 @@ img {
 	--border-radius: 0.3rem;
 	--lightgrey: #eae9ea;
 	--darkgrey: #ababab;
+	--darkergrey: #8a8a8a;
 	--width-m: calc(100vw - 2 * var(--space-m));
 }
 
@@ -97,6 +98,7 @@ body {
 body,
 .page,
 #_nuxt {
+	overscroll-behavior: none;
 }
 ::selection {
 	background: white;
