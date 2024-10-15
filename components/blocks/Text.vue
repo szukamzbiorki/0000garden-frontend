@@ -63,7 +63,7 @@
 			font-family: inherit;
 			margin-bottom: 1rem;
 			padding-left: calc(100vw / 12 * 1);
-			font-style: italic;
+			/* font-style: italic; */
 		}
 		@media screen and (max-width: 600px) {
 			& > p,

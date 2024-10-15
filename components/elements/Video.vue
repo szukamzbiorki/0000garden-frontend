@@ -3,21 +3,24 @@
 
 	const {
 		src,
+		srcmobile,
 		theme = 'default',
 		ratio = {},
-	} = defineProps<{ src: string; theme?: string; ratio?: Object }>()
+	} = defineProps<{ src: string; srcmobile?: string; theme?: string; ratio?: Object }>()
 
 	let hls
 
 	const videoEl = useTemplateRef('videoEl')
 
+	const { mobile } = useScreenSize()
+
 	function init() {
 		if (videoEl.value) {
 			if (!Hls.isSupported()) {
-				videoEl.value.src = src
+				videoEl.value.src = mobile && srcmobile ? srcmobile : src
 			} else {
 				hls = new Hls()
-				hls.loadSource(src)
+				hls.loadSource(mobile && srcmobile ? srcmobile : src)
 				hls.attachMedia(videoEl.value)
 			}
 		}

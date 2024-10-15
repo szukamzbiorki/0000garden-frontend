@@ -1,6 +1,6 @@
 <template>
-	<div class="page" :class="[{ active: active }]">
-		<!-- <PagesSignUp></PagesSignUp> -->
+	<div class="page index" :class="[{ active: active }]">
+		<PagesSignUp></PagesSignUp>
 		<PagesArchive></PagesArchive>
 		<Transition name="fade">
 			<div class="info" v-show="active && !mobile">
@@ -14,6 +14,7 @@
 				</div>
 			</div>
 		</Transition>
+		<ElementsControlBar v-show="mobile" :active="active"></ElementsControlBar>
 	</div>
 </template>
 
@@ -59,10 +60,20 @@
 					opacity: 1;
 				}
 			}
+
+			& > * {
+				position: absolute;
+				transition: top ease 0.5s, opacity 0.5s ease;
+			}
 		}
-		& > * {
-			position: absolute;
-			transition: top ease 0.5s, opacity 0.5s ease;
+		@media screen and (max-width: 640px) {
+			&.index {
+				max-height: 100vh;
+				display: grid;
+				& > * {
+					grid-area: 1/1;
+				}
+			}
 		}
 
 		& > .info {
@@ -92,7 +103,7 @@
 			left: 0;
 		}
 
-		@media screen and (min-height: 650px) {
+		@media screen and (min-height: 640px) {
 			min-height: calc(100vh + 1px);
 		}
 	}

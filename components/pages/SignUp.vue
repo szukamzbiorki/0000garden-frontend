@@ -2,7 +2,6 @@
 	<div class="signup">
 		<ElementsVideo :theme="'fullscreen'" :src="data.home.background.src"></ElementsVideo>
 		<div class="page">
-			<a href="https://0000.garden" class="archive">Archive</a>
 			<div class="middle">
 				<div class="logo">
 					<img class="logo-img" src="/assets/garden-logo.svg" alt="" srcset="" />
