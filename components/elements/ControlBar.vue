@@ -1,17 +1,15 @@
 <template>
 	<div class="controls">
-		<div class="bar" :class="{ active: hash != 'signup' }">
-			<div @click.prevent="hash = 'signup'" ref="signup" class="signup">SignUp</div>
-			<div @click.prevent="hash = 'archive'" ref="archive" class="archive">Archive</div>
+		<div class="bar" :class="{ active: active }">
+			<div @click.prevent="active = false" ref="signup" class="signup">SignUp</div>
+			<div @click.prevent="active = true" ref="archive" class="archive">Archive</div>
 			<div class="slider"></div>
 		</div>
 	</div>
 </template>
 
 <script setup>
-	const props = defineProps({
-		active: Boolean,
-	})
+	const active = useActive()
 
 	const hash = ref('signup')
 
@@ -20,6 +18,7 @@
 
 	const { width: signupWidth } = useElementSize(signup)
 	const { width: archiveWidth } = useElementSize(archive)
+	const archiveWidthPx = computed(() => archiveWidth.value + 'px')
 
 	const sliderWidth = computed(() =>
 		hash.value == 'signup' ? signupWidth.value + 'px' : archiveWidth.value + 'px'
@@ -33,21 +32,28 @@
 		right: var(--space-m);
 		width: fit-content;
 		background-color: rgba(255, 255, 255, 0.679);
-		color: var(--darkgrey);
+
 		z-index: 100;
 		padding: var(--space-s);
 		border-radius: var(--border-radius);
+		cursor: pointer;
+		user-select: none;
 		& > .bar {
 			padding: 0 var(--space-s);
 			display: flex;
 			flex-direction: row;
 			gap: var(--space-l);
 			justify-content: space-between;
+			color: var(--darkgrey);
+			transition: color 0.6s ease;
+			&.active {
+				color: white;
+			}
 			& > .slider {
 				position: fixed;
 				background-color: pink;
-				top: var(--space-m);
-				right: var(--space-m);
+				top: calc(var(--space-m));
+				right: calc((3 * var(--space-m)) + v-bind(archiveWidthPx) + 2px);
 				pointer-events: none;
 				width: v-bind(sliderWidth);
 				height: calc(1rem + 2 * var(--space-s));
@@ -60,7 +66,7 @@
 			}
 			&.active {
 				& > .slider {
-					left: calc(100vw - (3 * var(--space-m)) - v-bind(sliderWidth));
+					right: var(--space-m);
 				}
 			}
 		}

@@ -13,12 +13,17 @@ def ease_in_out(t):
     return (t ** 3) * (4 - 3 * t)  # stronger ease-in-out effect
     # return t * t * (3 - 2 * t)
 
-def generate_css_keyframes(steps, x, easing_function="ease-in-out"):
+def cubic_bezier_squeezed(t, p1x=0.37, p1y=0, p2x=0.15, p2y=1):
+    # Simulates a squeezed cubic-bezier by adjusting control points
+    return 3 * (1 - t) ** 2 * t * p1y + 3 * (1 - t) * t ** 2 * p2y + t ** 3
+
+def generate_css_keyframes(steps, x, easing_function="cubic-bezier-squeezed"):
     easing_functions = {
         "linear": linear_ease,
         "ease-in": ease_in,
         "ease-out": ease_out,
         "ease-in-out": ease_in_out,
+        "cubic-bezier-squeezed": cubic_bezier_squeezed,
     }
 
     ease_func = easing_functions.get(easing_function, linear_ease)
@@ -41,6 +46,6 @@ def generate_css_keyframes(steps, x, easing_function="ease-in-out"):
 
 steps = 50           
 x = 50             
-easing_function = "ease-in-out"  
+easing_function = "cubic-bezier-squeezed"  
 css = generate_css_keyframes(steps, x, easing_function)
 print(css)

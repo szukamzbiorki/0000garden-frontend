@@ -213,11 +213,11 @@ input.btn {
 }
 
 .gradient-enter-active {
-	animation: slide 0.7s reverse;
+	animation: slide 0.65s reverse;
 }
 
 .gradient-leave-active {
-	animation: slide 0.7s;
+	animation: slide 0.65s;
 }
 
 .fade-enter-from,
@@ -231,199 +231,199 @@ input.btn {
 	}
 
 	2.0% {
-		mask-image: linear-gradient(0, #00000000 -49.995272%, #000000ff 0.004728%);
+		mask-image: linear-gradient(0, #00000000 -49.8224%, #000000ff 0.1776%);
 	}
 
 	4.0% {
-		mask-image: linear-gradient(0, #00000000 -49.962752%, #000000ff 0.037248%);
+		mask-image: linear-gradient(0, #00000000 -49.2992%, #000000ff 0.7008%);
 	}
 
 	6.0% {
-		mask-image: linear-gradient(0, #00000000 -49.876232%, #000000ff 0.123768%);
+		mask-image: linear-gradient(0, #00000000 -48.4448%, #000000ff 1.5552%);
 	}
 
 	8.0% {
-		mask-image: linear-gradient(0, #00000000 -49.711232%, #000000ff 0.288768%);
+		mask-image: linear-gradient(0, #00000000 -47.2736%, #000000ff 2.7264%);
 	}
 
 	10.0% {
-		mask-image: linear-gradient(0, #00000000 -49.445%, #000000ff 0.555%);
+		mask-image: linear-gradient(0, #00000000 -45.8%, #000000ff 4.2%);
 	}
 
 	12.0% {
-		mask-image: linear-gradient(0, #00000000 -49.056512%, #000000ff 0.943488%);
+		mask-image: linear-gradient(0, #00000000 -44.0384%, #000000ff 5.9616%);
 	}
 
 	14.0% {
-		mask-image: linear-gradient(0, #00000000 -48.526472%, #000000ff 1.473528%);
+		mask-image: linear-gradient(0, #00000000 -42.0032%, #000000ff 7.9968%);
 	}
 
 	16.0% {
-		mask-image: linear-gradient(0, #00000000 -47.837312%, #000000ff 2.162688%);
+		mask-image: linear-gradient(0, #00000000 -39.7088%, #000000ff 10.2912%);
 	}
 
 	18.0% {
-		mask-image: linear-gradient(0, #00000000 -46.973192%, #000000ff 3.026808%);
+		mask-image: linear-gradient(0, #00000000 -37.1696%, #000000ff 12.8304%);
 	}
 
 	20.0% {
-		mask-image: linear-gradient(0, #00000000 -45.92%, #000000ff 4.08%);
+		mask-image: linear-gradient(0, #00000000 -34.4%, #000000ff 15.6%);
 	}
 
 	22.0% {
-		mask-image: linear-gradient(0, #00000000 -44.665352%, #000000ff 5.334648%);
+		mask-image: linear-gradient(0, #00000000 -31.4144%, #000000ff 18.5856%);
 	}
 
 	24.0% {
-		mask-image: linear-gradient(0, #00000000 -43.198592%, #000000ff 6.801408%);
+		mask-image: linear-gradient(0, #00000000 -28.2272%, #000000ff 21.7728%);
 	}
 
 	26.0% {
-		mask-image: linear-gradient(0, #00000000 -41.510792%, #000000ff 8.489208%);
+		mask-image: linear-gradient(0, #00000000 -24.8528%, #000000ff 25.1472%);
 	}
 
 	28.0% {
-		mask-image: linear-gradient(0, #00000000 -39.594752%, #000000ff 10.405248%);
+		mask-image: linear-gradient(0, #00000000 -21.3056%, #000000ff 28.6944%);
 	}
 
 	30.0% {
-		mask-image: linear-gradient(0, #00000000 -37.445%, #000000ff 12.555%);
+		mask-image: linear-gradient(0, #00000000 -17.6%, #000000ff 32.4%);
 	}
 
 	32.0% {
-		mask-image: linear-gradient(0, #00000000 -35.057792%, #000000ff 14.942208%);
+		mask-image: linear-gradient(0, #00000000 -13.7504%, #000000ff 36.2496%);
 	}
 
 	34.0% {
-		mask-image: linear-gradient(0, #00000000 -32.431112%, #000000ff 17.568888%);
+		mask-image: linear-gradient(0, #00000000 -9.7712%, #000000ff 40.2288%);
 	}
 
 	36.0% {
-		mask-image: linear-gradient(0, #00000000 -29.564672%, #000000ff 20.435328%);
+		mask-image: linear-gradient(0, #00000000 -5.6768%, #000000ff 44.3232%);
 	}
 
 	38.0% {
-		mask-image: linear-gradient(0, #00000000 -26.459912%, #000000ff 23.540088%);
+		mask-image: linear-gradient(0, #00000000 -1.4816%, #000000ff 48.5184%);
 	}
 
 	40.0% {
-		mask-image: linear-gradient(0, #00000000 -23.12%, #000000ff 26.88%);
+		mask-image: linear-gradient(0, #00000000 2.8%, #000000ff 52.8%);
 	}
 
 	42.0% {
-		mask-image: linear-gradient(0, #00000000 -19.549832%, #000000ff 30.450168%);
+		mask-image: linear-gradient(0, #00000000 7.1536%, #000000ff 57.1536%);
 	}
 
 	44.0% {
-		mask-image: linear-gradient(0, #00000000 -15.756032%, #000000ff 34.243968%);
+		mask-image: linear-gradient(0, #00000000 11.5648%, #000000ff 61.5648%);
 	}
 
 	46.0% {
-		mask-image: linear-gradient(0, #00000000 -11.746952%, #000000ff 38.253048%);
+		mask-image: linear-gradient(0, #00000000 16.0192%, #000000ff 66.0192%);
 	}
 
 	48.0% {
-		mask-image: linear-gradient(0, #00000000 -7.532672%, #000000ff 42.467328%);
+		mask-image: linear-gradient(0, #00000000 20.5024%, #000000ff 70.5024%);
 	}
 
 	50.0% {
-		mask-image: linear-gradient(0, #00000000 -3.125%, #000000ff 46.875%);
+		mask-image: linear-gradient(0, #00000000 25%, #000000ff 75%);
 	}
 
 	52.0% {
-		mask-image: linear-gradient(0, #00000000 1.462528%, #000000ff 51.462528%);
+		mask-image: linear-gradient(0, #00000000 29.4976%, #000000ff 79.4976%);
 	}
 
 	54.0% {
-		mask-image: linear-gradient(0, #00000000 6.214648%, #000000ff 56.214648%);
+		mask-image: linear-gradient(0, #00000000 33.9808%, #000000ff 83.9808%);
 	}
 
 	56.0% {
-		mask-image: linear-gradient(0, #00000000 11.114368%, #000000ff 61.114368%);
+		mask-image: linear-gradient(0, #00000000 38.4352%, #000000ff 88.4352%);
 	}
 
 	58.0% {
-		mask-image: linear-gradient(0, #00000000 16.142968%, #000000ff 66.142968%);
+		mask-image: linear-gradient(0, #00000000 42.8464%, #000000ff 92.8464%);
 	}
 
 	60.0% {
-		mask-image: linear-gradient(0, #00000000 21.28%, #000000ff 71.28%);
+		mask-image: linear-gradient(0, #00000000 47.2%, #000000ff 97.2%);
 	}
 
 	62.0% {
-		mask-image: linear-gradient(0, #00000000 26.503288%, #000000ff 76.503288%);
+		mask-image: linear-gradient(0, #00000000 51.4816%, #000000ff 101.4816%);
 	}
 
 	64.0% {
-		mask-image: linear-gradient(0, #00000000 31.788928%, #000000ff 81.788928%);
+		mask-image: linear-gradient(0, #00000000 55.6768%, #000000ff 105.6768%);
 	}
 
 	66.0% {
-		mask-image: linear-gradient(0, #00000000 37.111288%, #000000ff 87.111288%);
+		mask-image: linear-gradient(0, #00000000 59.7712%, #000000ff 109.7712%);
 	}
 
 	68.0% {
-		mask-image: linear-gradient(0, #00000000 42.443008%, #000000ff 92.443008%);
+		mask-image: linear-gradient(0, #00000000 63.7504%, #000000ff 113.7504%);
 	}
 
 	70.0% {
-		mask-image: linear-gradient(0, #00000000 47.755%, #000000ff 97.755%);
+		mask-image: linear-gradient(0, #00000000 67.6%, #000000ff 117.6%);
 	}
 
 	72.0% {
-		mask-image: linear-gradient(0, #00000000 53.016448%, #000000ff 103.016448%);
+		mask-image: linear-gradient(0, #00000000 71.3056%, #000000ff 121.3056%);
 	}
 
 	74.0% {
-		mask-image: linear-gradient(0, #00000000 58.194808%, #000000ff 108.194808%);
+		mask-image: linear-gradient(0, #00000000 74.8528%, #000000ff 124.8528%);
 	}
 
 	76.0% {
-		mask-image: linear-gradient(0, #00000000 63.255808%, #000000ff 113.255808%);
+		mask-image: linear-gradient(0, #00000000 78.2272%, #000000ff 128.2272%);
 	}
 
 	78.0% {
-		mask-image: linear-gradient(0, #00000000 68.163448%, #000000ff 118.163448%);
+		mask-image: linear-gradient(0, #00000000 81.4144%, #000000ff 131.4144%);
 	}
 
 	80.0% {
-		mask-image: linear-gradient(0, #00000000 72.88%, #000000ff 122.88%);
+		mask-image: linear-gradient(0, #00000000 84.4%, #000000ff 134.4%);
 	}
 
 	82.0% {
-		mask-image: linear-gradient(0, #00000000 77.366008%, #000000ff 127.366008%);
+		mask-image: linear-gradient(0, #00000000 87.1696%, #000000ff 137.1696%);
 	}
 
 	84.0% {
-		mask-image: linear-gradient(0, #00000000 81.580288%, #000000ff 131.580288%);
+		mask-image: linear-gradient(0, #00000000 89.7088%, #000000ff 139.7088%);
 	}
 
 	86.0% {
-		mask-image: linear-gradient(0, #00000000 85.479928%, #000000ff 135.479928%);
+		mask-image: linear-gradient(0, #00000000 92.0032%, #000000ff 142.0032%);
 	}
 
 	88.0% {
-		mask-image: linear-gradient(0, #00000000 89.020288%, #000000ff 139.020288%);
+		mask-image: linear-gradient(0, #00000000 94.0384%, #000000ff 144.0384%);
 	}
 
 	90.0% {
-		mask-image: linear-gradient(0, #00000000 92.155%, #000000ff 142.155%);
+		mask-image: linear-gradient(0, #00000000 95.8%, #000000ff 145.8%);
 	}
 
 	92.0% {
-		mask-image: linear-gradient(0, #00000000 94.835968%, #000000ff 144.835968%);
+		mask-image: linear-gradient(0, #00000000 97.2736%, #000000ff 147.2736%);
 	}
 
 	94.0% {
-		mask-image: linear-gradient(0, #00000000 97.013368%, #000000ff 147.013368%);
+		mask-image: linear-gradient(0, #00000000 98.4448%, #000000ff 148.4448%);
 	}
 
 	96.0% {
-		mask-image: linear-gradient(0, #00000000 98.635648%, #000000ff 148.635648%);
+		mask-image: linear-gradient(0, #00000000 99.2992%, #000000ff 149.2992%);
 	}
 
 	98.0% {
-		mask-image: linear-gradient(0, #00000000 99.649528%, #000000ff 149.649528%);
+		mask-image: linear-gradient(0, #00000000 99.8224%, #000000ff 149.8224%);
 	}
 
 	100.0% {

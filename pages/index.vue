@@ -14,7 +14,7 @@
 				</div>
 			</div>
 		</Transition>
-		<ElementsControlBar v-show="mobile" :active="active"></ElementsControlBar>
+		<ElementsControlBar></ElementsControlBar>
 	</div>
 </template>
 
@@ -35,13 +35,12 @@
 		}, 3500)
 	})
 
-	const active = computed(() => (y.value > 0 ? true : false))
+	const active = useActive()
 </script>
 
 <style scoped lang="postcss">
 	.page {
 		@media screen and (min-width: 640px) {
-			min-height: calc(100vh + 1px);
 			/* &.active {
 				& > .signup {
 					opacity: 0;
