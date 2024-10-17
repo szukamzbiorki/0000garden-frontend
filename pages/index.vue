@@ -19,6 +19,7 @@
 <script setup>
 	import 'animate.css'
 	const { mobile } = useScreenSize()
+	//tak
 
 	const { y } = useWindowScroll()
 
@@ -88,14 +89,15 @@
 			opacity: 1;
 			top: 0;
 			height: 100vh;
-			z-index: 60;
-			/* mask-image: -webkit-gradient(
-				linear,
-				left 30%,
-				left bottom,
-				from(rgba(0, 0, 0, 1)),
-				to(rgba(0, 0, 0, 0))
-			); */
+			z-index: 31;
+			--scale: 1;
+			mask-image: linear-gradient(
+				to top,
+				rgba(255, 255, 255, 0) calc(var(--scale) * 0%),
+				rgba(255, 255, 255, 0.5) calc(var(--scale) * 25%),
+				rgba(255, 255, 255, 1) calc(var(--scale) * 50%),
+				rgba(255, 255, 255, 1) calc(var(--scale) * 100%)
+			);
 		}
 		& > .archive {
 			opacity: 0;

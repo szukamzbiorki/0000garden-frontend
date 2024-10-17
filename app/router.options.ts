@@ -5,10 +5,15 @@ export default {
 	scrollBehavior(to, from, savedPosition) {
 		if (savedPosition) {
 			return savedPosition
-		} else if (to.name === '/') {
-			return { top: 1 }
 		} else {
 			return false
 		}
+		// if (savedPosition) {
+		// 	return savedPosition
+		// } else if (to.name === '/') {
+		// 	return { top: 1 }
+		// } else {
+		// 	return false
+		// }
 	},
 } satisfies RouterConfig
