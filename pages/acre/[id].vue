@@ -13,6 +13,9 @@
 					class="dl"
 					>{{ acre.download.asset.originalFilename }}</a
 				>
+				<div v-if="!mobile && acre.contributor" class="contributor">
+					{{ acre.contributor }}
+				</div>
 			</div>
 			<Content :sections="acre.blocks"></Content>
 		</div>
@@ -91,9 +94,15 @@
 					}
 				}
 				& > .dl {
-					grid-column: span 3;
+					grid-column: span 2;
 					&::before {
 						content: 'Download: ';
+					}
+				}
+				& > .contributor {
+					grid-column: span 2;
+					&::before {
+						content: 'Contributor: ';
 					}
 				}
 				& > .subject {

@@ -99,6 +99,7 @@
 
 <style lang="postcss" scoped>
 	.video {
+		position: relative;
 		&.fullscreen {
 			background-color: white;
 
@@ -113,6 +114,9 @@
 		}
 	}
 	.controls {
+		position: absolute;
+		top: -1rem;
+		width: var(--width-m);
 		display: grid;
 		grid-auto-flow: column;
 		gap: var(--space-m);

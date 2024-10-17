@@ -162,6 +162,9 @@
 			}
 		}
 	}
+	.caption {
+		text-align: right;
+	}
 	.controls {
 		position: absolute;
 		width: 100%;
