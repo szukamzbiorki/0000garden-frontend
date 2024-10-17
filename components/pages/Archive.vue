@@ -40,9 +40,6 @@
 	const { data } = await useAsyncData(() => sanity.fetch(query))
 	const { mobile } = useScreenSize()
 	const scaled = ref(false)
-	const el = useCurrentElement()
-	const { height: elHeight } = useElementSize(el)
-	const topDistance = computed(() => `calc(50vh - ${Math.floor(elHeight.value / 2)}px)`)
 
 	const NuxtLink = resolveComponent('NuxtLink')
 
@@ -72,7 +69,8 @@
 			transition: all 0.3s ease;
 			transform-origin: top left;
 			@media screen and (min-width: 640px) {
-				top: v-bind(topDistance) !important;
+				top: 50vh !important;
+				transform: translateY(-50%);
 			}
 			&.scaled {
 				transform: scale(0.25);

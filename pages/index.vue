@@ -54,7 +54,7 @@
 					pointer-events: none;
 				}
 				& > .archive {
-					top: 10vh;
+					/* top: 10vh; */
 					opacity: 1;
 				}
 			}
@@ -99,7 +99,7 @@
 		}
 		& > .archive {
 			opacity: 0;
-			top: 80vh;
+			/* top: 80vh; */
 		}
 
 		@media screen and (min-height: 640px) {
