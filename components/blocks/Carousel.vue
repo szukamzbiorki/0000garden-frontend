@@ -163,7 +163,10 @@
 		}
 	}
 	.caption {
+		padding-top: var(--space-s);
 		text-align: right;
+		font-size: var(--type-s);
+		line-height: var(--type-s-leading);
 	}
 	.controls {
 		position: absolute;

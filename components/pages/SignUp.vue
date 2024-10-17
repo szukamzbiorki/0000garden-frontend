@@ -12,7 +12,7 @@
 						class="text"
 						type="email"
 						name="email"
-						placeholder="Enter your e-mail address"
+						placeholder="Enter your e-mail address here"
 						required
 					/>
 					<div class="button">

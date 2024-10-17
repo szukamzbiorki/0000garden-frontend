@@ -5,9 +5,7 @@
 		<Transition name="fade">
 			<div class="info" v-show="active && !mobile">
 				<NuxtLink to="/info" class="additional">Additional Information</NuxtLink>
-				<NuxtLink to="mailto:info@0000.garden" class="additional"
-					>info@0000.garden</NuxtLink
-				>
+				<div class="additional">info@0000.garden</div>
 				<div class="powered">
 					Garden is powered by
 					<NuxtLink to="https://00316.agency" class="additional">00316.agency</NuxtLink>
@@ -82,6 +80,8 @@
 			display: flex;
 			flex-direction: row;
 			gap: var(--space-l);
+			font-size: var(--type-s);
+			line-height: var(--type-s-leading);
 		}
 
 		& > .signup {
@@ -100,7 +100,6 @@
 		& > .archive {
 			opacity: 0;
 			top: 80vh;
-			left: 0;
 		}
 
 		@media screen and (min-height: 640px) {

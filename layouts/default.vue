@@ -44,7 +44,7 @@
 		}
 
 		& > .top {
-			top: var(--space-m);
+			top: var(--space-l);
 			left: 50vw;
 			transform: translateX(-50%);
 			display: flex;

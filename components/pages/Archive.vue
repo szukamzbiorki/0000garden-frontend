@@ -40,6 +40,9 @@
 	const { data } = await useAsyncData(() => sanity.fetch(query))
 	const { mobile } = useScreenSize()
 	const scaled = ref(false)
+	const el = useCurrentElement()
+	const { height: elHeight } = useElementSize(el)
+	const topDistance = computed(() => `calc(50vh - ${Math.floor(elHeight.value / 2)}px)`)
 
 	const NuxtLink = resolveComponent('NuxtLink')
 
@@ -62,11 +65,15 @@
 		}
 		& > .archive {
 			width: var(--width-m);
+			left: var(--space-m);
 			display: flex;
 			flex-direction: column;
 			gap: var(--space-xl);
 			transition: all 0.3s ease;
 			transform-origin: top left;
+			@media screen and (min-width: 640px) {
+				top: v-bind(topDistance) !important;
+			}
 			&.scaled {
 				transform: scale(0.25);
 			}
@@ -106,7 +113,7 @@
 						gap: var(--space-m);
 						& > .no {
 							&::before {
-								content: 'Number: ';
+								content: 'Project: ';
 							}
 						}
 						& > .title {
@@ -131,7 +138,7 @@
 							}
 						}
 						& > .subject {
-							grid-column: span 3;
+							grid-column: span 2;
 							&::before {
 								content: 'Subject: ';
 							}

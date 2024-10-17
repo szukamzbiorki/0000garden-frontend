@@ -71,6 +71,8 @@
 			bottom: var(--space-m);
 			right: var(--space-m);
 			z-index: 70;
+			font-size: var(--type-s);
+			line-height: var(--type-s-leading);
 		}
 		& > .content {
 			width: var(--width-m);
@@ -84,7 +86,7 @@
 				gap: var(--space-m);
 				& > .no {
 					&::before {
-						content: 'Number: ';
+						content: 'Project: ';
 					}
 				}
 				& > .title {
@@ -106,7 +108,7 @@
 					}
 				}
 				& > .subject {
-					grid-column: span 3;
+					grid-column: span 2;
 					&::before {
 						content: 'Subject: ';
 					}
