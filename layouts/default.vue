@@ -50,6 +50,9 @@
 			display: flex;
 			flex-direction: column;
 			gap: var(--space-xl);
+			@media screen and max-width(640px) {
+				position: sticky !important;
+			}
 			& > .logo {
 				& > * {
 					height: 3.5rem;

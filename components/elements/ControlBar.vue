@@ -30,8 +30,8 @@
 	.controls {
 		position: fixed;
 		top: var(--space-m);
-		left: var(--space-m);
-		width: var(--width-m);
+		right: var(--space-m);
+		width: fit-content;
 		background-color: rgba(255, 255, 255, 0.679);
 		color: var(--darkgrey);
 		z-index: 100;
@@ -41,15 +41,16 @@
 			padding: 0 var(--space-s);
 			display: flex;
 			flex-direction: row;
+			gap: var(--space-l);
 			justify-content: space-between;
 			& > .slider {
 				position: fixed;
 				background-color: pink;
 				top: var(--space-m);
-				left: var(--space-m);
+				right: var(--space-m);
 				pointer-events: none;
 				width: v-bind(sliderWidth);
-				height: calc(1rem + 2 * var(--space-s) + 2px);
+				height: calc(1rem + 2 * var(--space-s));
 				border-radius: var(--border-radius);
 				background-color: rgba(150, 150, 150, 0.25);
 				box-sizing: content-box;

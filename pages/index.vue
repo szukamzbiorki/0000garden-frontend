@@ -12,7 +12,7 @@
 				</div>
 			</div>
 		</Transition>
-		<!-- <ElementsControlBar v-show="mobile" :active="active"></ElementsControlBar> -->
+		<ElementsControlBar v-show="mobile" :active="active"></ElementsControlBar>
 	</div>
 </template>
 
@@ -71,6 +71,7 @@
 				max-height: 100vh;
 				& > .archive {
 					/* top: 10vh; */
+					margin-left: var(--space-m);
 					opacity: 1;
 				}
 			}
@@ -91,6 +92,7 @@
 		}
 
 		& > .signup {
+			position: relative;
 			opacity: 1;
 			top: 0;
 			height: 100vh;
@@ -99,8 +101,8 @@
 			mask-image: linear-gradient(
 				to top,
 				rgba(255, 255, 255, 0) calc(var(--scale) * 0%),
-				rgba(255, 255, 255, 0.5) calc(var(--scale) * 25%),
-				rgba(255, 255, 255, 1) calc(var(--scale) * 50%),
+				rgba(255, 255, 255, 0.5) calc(var(--scale) * 10%),
+				rgba(255, 255, 255, 1) calc(var(--scale) * 25%),
 				rgba(255, 255, 255, 1) calc(var(--scale) * 100%)
 			);
 		}
