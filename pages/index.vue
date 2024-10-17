@@ -1,6 +1,8 @@
 <template>
 	<div class="page index" :class="[{ active: active }]">
-		<PagesSignUp></PagesSignUp>
+		<Transition name="gradient">
+			<PagesSignUp v-show="!active"></PagesSignUp>
+		</Transition>
 		<PagesArchive></PagesArchive>
 		<Transition name="fade">
 			<div class="info" v-show="active && !mobile">
@@ -19,7 +21,6 @@
 <script setup>
 	import 'animate.css'
 	const { mobile } = useScreenSize()
-	//tak
 
 	const { y } = useWindowScroll()
 
@@ -35,32 +36,25 @@
 	})
 
 	const active = computed(() => (y.value > 0 ? true : false))
-
-	const showImage = computed(() => {
-		return active.value || passed.value
-	})
-
-	definePageMeta({
-		name: 'indexah',
-	})
 </script>
 
 <style scoped lang="postcss">
 	.page {
 		@media screen and (min-width: 640px) {
 			min-height: calc(100vh + 1px);
-			&.active {
+			/* &.active {
 				& > .signup {
 					opacity: 0;
 					top: -80vh;
 					pointer-events: none;
 				}
+			} */
+			&.active {
 				& > .archive {
 					/* top: 10vh; */
 					opacity: 1;
 				}
 			}
-
 			& > * {
 				position: absolute;
 				transition: top ease 0.5s, opacity 0.5s ease;
@@ -97,14 +91,6 @@
 			top: 0;
 			height: 100vh;
 			z-index: 31;
-			--scale: 1;
-			mask-image: linear-gradient(
-				to top,
-				rgba(255, 255, 255, 0) calc(var(--scale) * 0%),
-				rgba(255, 255, 255, 0.5) calc(var(--scale) * 10%),
-				rgba(255, 255, 255, 1) calc(var(--scale) * 25%),
-				rgba(255, 255, 255, 1) calc(var(--scale) * 100%)
-			);
 		}
 	}
 </style>
