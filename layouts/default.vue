@@ -31,7 +31,7 @@
 	header {
 		& > * {
 			position: fixed;
-			z-index: 30;
+			z-index: 2;
 			user-select: none;
 		}
 		& > .mailinglist {

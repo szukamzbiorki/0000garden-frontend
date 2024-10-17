@@ -12,7 +12,7 @@
 				</div>
 			</div>
 		</Transition>
-		<ElementsControlBar v-show="mobile" :active="active"></ElementsControlBar>
+		<!-- <ElementsControlBar v-show="mobile" :active="active"></ElementsControlBar> -->
 	</div>
 </template>
 
@@ -48,6 +48,7 @@
 <style scoped lang="postcss">
 	.page {
 		@media screen and (min-width: 640px) {
+			min-height: calc(100vh + 1px);
 			&.active {
 				& > .signup {
 					opacity: 0;
@@ -68,11 +69,15 @@
 		@media screen and (max-width: 640px) {
 			&.index {
 				max-height: 100vh;
-				display: grid;
-				& > * {
-					grid-area: 1/1;
+				& > .archive {
+					/* top: 10vh; */
+					opacity: 1;
 				}
 			}
+		}
+
+		& > .archive {
+			opacity: 0;
 		}
 
 		& > .info {
@@ -98,14 +103,6 @@
 				rgba(255, 255, 255, 1) calc(var(--scale) * 50%),
 				rgba(255, 255, 255, 1) calc(var(--scale) * 100%)
 			);
-		}
-		& > .archive {
-			opacity: 0;
-			/* top: 80vh; */
-		}
-
-		@media screen and (min-height: 640px) {
-			min-height: calc(100vh + 1px);
 		}
 	}
 </style>
