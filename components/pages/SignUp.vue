@@ -53,7 +53,7 @@
 
 	const checkEmail = () => {
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-		emailError.value = !emailRegex.test(email.value)
+		emailError.value = email.value == '' ? false : !emailRegex.test(email.value)
 	}
 
 	async function handleSubmit(e) {

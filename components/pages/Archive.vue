@@ -7,6 +7,7 @@
 					:to="'acre/' + acre.slug.current"
 					:is="acre.upcoming ? 'div' : NuxtLink"
 					v-for="(acre, i) in data.acres"
+					:key="acre._id"
 					class="item"
 					:class="{ upcoming: acre.upcoming }"
 				>
@@ -33,8 +34,7 @@
 <script setup>
 	import 'animate.css'
 	const query = groq`{
-		'acres': *[_type == "acre"]{download{asset->}, ...}| order(orderRank),
-		'mails': *[_type == "mail"]{download{asset->}, ...}| order(orderRank)
+		'acres': *[_type == "acre"]{download{asset->}, ...}| order(orderRank)
 	}`
 	const sanity = useSanity()
 	const { data } = await useAsyncData(() => sanity.fetch(query))
@@ -44,11 +44,13 @@
 
 	function formatDate(dateString) {
 		const date = new Date(dateString)
-		const day = String(date.getDate()).padStart(2, '0')
-		const month = String(date.getMonth() + 1).padStart(2, '0')
-		const year = date.getFullYear()
-
-		return `${day}.${month}.${year}`
+		return date
+			.toLocaleDateString('en-GB', {
+				day: '2-digit',
+				month: '2-digit',
+				year: 'numeric',
+			})
+			.replace(/\//g, '.')
 	}
 </script>
 

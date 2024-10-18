@@ -1,8 +1,8 @@
 <template>
 	<div class="controls">
 		<div class="bar" :class="{ active: active }">
-			<div @click.prevent="active = false" ref="signup" class="signup">Newsletter</div>
-			<div @click.prevent="active = true" ref="archive" class="archive">Archive</div>
+			<div @click.prevent="setActive(false)" ref="signup" class="signup">Newsletter</div>
+			<div @click.prevent="setActive(true)" ref="archive" class="archive">Archive</div>
 			<div class="slider"></div>
 		</div>
 	</div>
@@ -11,14 +11,16 @@
 <script setup>
 	const active = useActive()
 
-	const hash = ref('signup')
-
 	const signup = useTemplateRef('signup')
 	const archive = useTemplateRef('archive')
 
 	const { width: signupWidth } = useElementSize(signup)
 	const { width: archiveWidth } = useElementSize(archive)
 	const archiveWidthPx = computed(() => archiveWidth.value + 'px')
+
+	function setActive(state) {
+		active.value = state
+	}
 
 	const sliderWidth = computed(() =>
 		active.value == false ? signupWidth.value + 'px' : archiveWidth.value + 'px'
