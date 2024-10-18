@@ -54,9 +54,6 @@
 </script>
 
 <style scoped lang="postcss">
-	.upcoming {
-		filter: url('#pixelate');
-	}
 	.page {
 		& > * {
 			position: absolute;
@@ -93,7 +90,10 @@
 						& > * {
 							color: var(--darkgrey) !important;
 						}
-						& &:hover {
+						&.upcoming {
+							filter: blur(2px);
+						}
+						&:hover {
 							color: var(--lightgrey) !important;
 							border-bottom: var(--lightgrey) 1px solid;
 							& > * {
