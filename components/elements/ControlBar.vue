@@ -1,7 +1,7 @@
 <template>
 	<div class="controls">
 		<div class="bar" :class="{ active: active }">
-			<div @click.prevent="active = false" ref="signup" class="signup">SignUp</div>
+			<div @click.prevent="active = false" ref="signup" class="signup">Newsletter</div>
 			<div @click.prevent="active = true" ref="archive" class="archive">Archive</div>
 			<div class="slider"></div>
 		</div>
@@ -21,7 +21,7 @@
 	const archiveWidthPx = computed(() => archiveWidth.value + 'px')
 
 	const sliderWidth = computed(() =>
-		hash.value == 'signup' ? signupWidth.value + 'px' : archiveWidth.value + 'px'
+		active.value == false ? signupWidth.value + 'px' : archiveWidth.value + 'px'
 	)
 </script>
 

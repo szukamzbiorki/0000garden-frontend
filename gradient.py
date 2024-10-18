@@ -13,7 +13,7 @@ def ease_in_out(t):
     return (t ** 3) * (4 - 3 * t)  # stronger ease-in-out effect
     # return t * t * (3 - 2 * t)
 
-def cubic_bezier_squeezed(t, p1x=0.37, p1y=0, p2x=0.15, p2y=1):
+def cubic_bezier_squeezed(t, p1x=0.37, p1y=0, p2x=1, p2y=0.35):
     # Simulates a squeezed cubic-bezier by adjusting control points
     return 3 * (1 - t) ** 2 * t * p1y + 3 * (1 - t) * t ** 2 * p2y + t ** 3
 
@@ -32,9 +32,11 @@ def generate_css_keyframes(steps, x, easing_function="cubic-bezier-squeezed"):
     for i in range(steps + 1):
         t = i / steps  
         eased_t = ease_func(t) 
+
+        calculated = eased_t * (100 + x)
         
-        gradient_start = round(-x + eased_t * (100 + x), 12)
-        gradient_end = round(eased_t * (100 + x), 12)
+        gradient_start = round(-x + calculated, 12)
+        gradient_end = round(calculated, 12)
 
         css_code += f"""
     {round(t * 100, 5)}% {{
@@ -48,4 +50,8 @@ steps = 50
 x = 50             
 easing_function = "cubic-bezier-squeezed"  
 css = generate_css_keyframes(steps, x, easing_function)
-print(css)
+
+with open("generated_css_keyframes.txt", "w") as file:
+    file.write(css)
+
+print("CSS keyframes have been saved to generated_css_keyframes.txt")

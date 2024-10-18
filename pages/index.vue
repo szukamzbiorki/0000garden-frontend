@@ -4,16 +4,14 @@
 			<PagesSignUp v-show="!active"></PagesSignUp>
 		</Transition>
 		<PagesArchive></PagesArchive>
-		<Transition name="fade">
-			<div class="info" v-show="active && !mobile">
-				<NuxtLink to="/info" class="additional">Additional Information</NuxtLink>
-				<div class="additional">info@0000.garden</div>
-				<div class="powered">
-					Garden is powered by
-					<NuxtLink to="https://00316.agency" class="additional">00316.agency</NuxtLink>
-				</div>
+		<div class="info" v-show="!mobile">
+			<NuxtLink to="/info" class="additional">Additional Information</NuxtLink>
+			<div class="additional">info@0000.garden</div>
+			<div class="powered">
+				Garden is powered by
+				<NuxtLink to="https://00316.agency" class="additional">00316.agency</NuxtLink>
 			</div>
-		</Transition>
+		</div>
 		<ElementsControlBar></ElementsControlBar>
 	</div>
 </template>
@@ -82,6 +80,11 @@
 			gap: var(--space-l);
 			font-size: var(--type-s);
 			line-height: var(--type-s-leading);
+			z-index: 33;
+			color: var(--darkgrey);
+			& a {
+				color: var(--darkgrey);
+			}
 		}
 
 		& > .signup {

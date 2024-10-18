@@ -1,0 +1,205 @@
+
+    0.0% {
+        mask-image: linear-gradient(0, #00000000 -50.0%, #000000ff 0.0%);
+    }
+    
+    2.0% {
+        mask-image: linear-gradient(0, #00000000 -49.93706%, #000000ff 0.06294%);
+    }
+    
+    4.0% {
+        mask-image: linear-gradient(0, #00000000 -49.74848%, #000000ff 0.25152%);
+    }
+    
+    6.0% {
+        mask-image: linear-gradient(0, #00000000 -49.43462%, #000000ff 0.56538%);
+    }
+    
+    8.0% {
+        mask-image: linear-gradient(0, #00000000 -48.99584%, #000000ff 1.00416%);
+    }
+    
+    10.0% {
+        mask-image: linear-gradient(0, #00000000 -48.4325%, #000000ff 1.5675%);
+    }
+    
+    12.0% {
+        mask-image: linear-gradient(0, #00000000 -47.74496%, #000000ff 2.25504%);
+    }
+    
+    14.0% {
+        mask-image: linear-gradient(0, #00000000 -46.93358%, #000000ff 3.06642%);
+    }
+    
+    16.0% {
+        mask-image: linear-gradient(0, #00000000 -45.99872%, #000000ff 4.00128%);
+    }
+    
+    18.0% {
+        mask-image: linear-gradient(0, #00000000 -44.94074%, #000000ff 5.05926%);
+    }
+    
+    20.0% {
+        mask-image: linear-gradient(0, #00000000 -43.76%, #000000ff 6.24%);
+    }
+    
+    22.0% {
+        mask-image: linear-gradient(0, #00000000 -42.45686%, #000000ff 7.54314%);
+    }
+    
+    24.0% {
+        mask-image: linear-gradient(0, #00000000 -41.03168%, #000000ff 8.96832%);
+    }
+    
+    26.0% {
+        mask-image: linear-gradient(0, #00000000 -39.48482%, #000000ff 10.51518%);
+    }
+    
+    28.0% {
+        mask-image: linear-gradient(0, #00000000 -37.81664%, #000000ff 12.18336%);
+    }
+    
+    30.0% {
+        mask-image: linear-gradient(0, #00000000 -36.0275%, #000000ff 13.9725%);
+    }
+    
+    32.0% {
+        mask-image: linear-gradient(0, #00000000 -34.11776%, #000000ff 15.88224%);
+    }
+    
+    34.0% {
+        mask-image: linear-gradient(0, #00000000 -32.08778%, #000000ff 17.91222%);
+    }
+    
+    36.0% {
+        mask-image: linear-gradient(0, #00000000 -29.93792%, #000000ff 20.06208%);
+    }
+    
+    38.0% {
+        mask-image: linear-gradient(0, #00000000 -27.66854%, #000000ff 22.33146%);
+    }
+    
+    40.0% {
+        mask-image: linear-gradient(0, #00000000 -25.28%, #000000ff 24.72%);
+    }
+    
+    42.0% {
+        mask-image: linear-gradient(0, #00000000 -22.77266%, #000000ff 27.22734%);
+    }
+    
+    44.0% {
+        mask-image: linear-gradient(0, #00000000 -20.14688%, #000000ff 29.85312%);
+    }
+    
+    46.0% {
+        mask-image: linear-gradient(0, #00000000 -17.40302%, #000000ff 32.59698%);
+    }
+    
+    48.0% {
+        mask-image: linear-gradient(0, #00000000 -14.54144%, #000000ff 35.45856%);
+    }
+    
+    50.0% {
+        mask-image: linear-gradient(0, #00000000 -11.5625%, #000000ff 38.4375%);
+    }
+    
+    52.0% {
+        mask-image: linear-gradient(0, #00000000 -8.46656%, #000000ff 41.53344%);
+    }
+    
+    54.0% {
+        mask-image: linear-gradient(0, #00000000 -5.25398%, #000000ff 44.74602%);
+    }
+    
+    56.0% {
+        mask-image: linear-gradient(0, #00000000 -1.92512%, #000000ff 48.07488%);
+    }
+    
+    58.0% {
+        mask-image: linear-gradient(0, #00000000 1.51966%, #000000ff 51.51966%);
+    }
+    
+    60.0% {
+        mask-image: linear-gradient(0, #00000000 5.08%, #000000ff 55.08%);
+    }
+    
+    62.0% {
+        mask-image: linear-gradient(0, #00000000 8.75554%, #000000ff 58.75554%);
+    }
+    
+    64.0% {
+        mask-image: linear-gradient(0, #00000000 12.54592%, #000000ff 62.54592%);
+    }
+    
+    66.0% {
+        mask-image: linear-gradient(0, #00000000 16.45078%, #000000ff 66.45078%);
+    }
+    
+    68.0% {
+        mask-image: linear-gradient(0, #00000000 20.46976%, #000000ff 70.46976%);
+    }
+    
+    70.0% {
+        mask-image: linear-gradient(0, #00000000 24.6025%, #000000ff 74.6025%);
+    }
+    
+    72.0% {
+        mask-image: linear-gradient(0, #00000000 28.84864%, #000000ff 78.84864%);
+    }
+    
+    74.0% {
+        mask-image: linear-gradient(0, #00000000 33.20782%, #000000ff 83.20782%);
+    }
+    
+    76.0% {
+        mask-image: linear-gradient(0, #00000000 37.67968%, #000000ff 87.67968%);
+    }
+    
+    78.0% {
+        mask-image: linear-gradient(0, #00000000 42.26386%, #000000ff 92.26386%);
+    }
+    
+    80.0% {
+        mask-image: linear-gradient(0, #00000000 46.96%, #000000ff 96.96%);
+    }
+    
+    82.0% {
+        mask-image: linear-gradient(0, #00000000 51.76774%, #000000ff 101.76774%);
+    }
+    
+    84.0% {
+        mask-image: linear-gradient(0, #00000000 56.68672%, #000000ff 106.68672%);
+    }
+    
+    86.0% {
+        mask-image: linear-gradient(0, #00000000 61.71658%, #000000ff 111.71658%);
+    }
+    
+    88.0% {
+        mask-image: linear-gradient(0, #00000000 66.85696%, #000000ff 116.85696%);
+    }
+    
+    90.0% {
+        mask-image: linear-gradient(0, #00000000 72.1075%, #000000ff 122.1075%);
+    }
+    
+    92.0% {
+        mask-image: linear-gradient(0, #00000000 77.46784%, #000000ff 127.46784%);
+    }
+    
+    94.0% {
+        mask-image: linear-gradient(0, #00000000 82.93762%, #000000ff 132.93762%);
+    }
+    
+    96.0% {
+        mask-image: linear-gradient(0, #00000000 88.51648%, #000000ff 138.51648%);
+    }
+    
+    98.0% {
+        mask-image: linear-gradient(0, #00000000 94.20406%, #000000ff 144.20406%);
+    }
+    
+    100.0% {
+        mask-image: linear-gradient(0, #00000000 100.0%, #000000ff 150.0%);
+    }
+    

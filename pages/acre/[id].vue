@@ -79,7 +79,7 @@
 			& > .bar {
 				display: grid;
 				grid-template-columns: repeat(12, 1fr);
-				border-bottom: var(--lightgrey) 1px solid;
+				border-bottom: var(--darkgrey) 1px solid;
 				@media screen and (max-width: 640px) {
 					grid-template-columns: repeat(4, 1fr);
 				}

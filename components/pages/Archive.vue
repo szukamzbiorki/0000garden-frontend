@@ -1,7 +1,7 @@
 <template>
 	<div class="archive" :class="{ scaled }">
 		<div v-if="data.acres[0]" class="acres">
-			<div class="title">Acre Archive</div>
+			<!-- <div class="title">Acre Archive</div> -->
 			<div class="list">
 				<component
 					:to="'acre/' + acre.slug.current"
@@ -54,6 +54,9 @@
 </script>
 
 <style scoped lang="postcss">
+	.upcoming {
+		filter: url('#pixelate');
+	}
 	.page {
 		& > * {
 			position: absolute;
@@ -82,7 +85,7 @@
 				& > .list {
 					display: flex;
 					flex-direction: column;
-					padding-left: var(--space-m);
+					/* padding-left: var(--space-m); */
 
 					& > .item {
 						border-bottom: var(--darkgrey) 1px solid;
@@ -90,10 +93,7 @@
 						& > * {
 							color: var(--darkgrey) !important;
 						}
-						&.upcoming {
-							filter: blur(2px);
-						}
-						&:hover {
+						& &:hover {
 							color: var(--lightgrey) !important;
 							border-bottom: var(--lightgrey) 1px solid;
 							& > * {

@@ -213,11 +213,11 @@ input.btn {
 }
 
 .gradient-enter-active {
-	animation: slide 0.65s reverse;
+	animation: slide 0.55s reverse;
 }
 
 .gradient-leave-active {
-	animation: slide 0.65s;
+	animation: slide 0.55s;
 }
 
 .fade-enter-from,
