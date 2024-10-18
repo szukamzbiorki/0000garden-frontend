@@ -52,6 +52,9 @@
 </template>
 
 <style lang="postcss" scoped>
+	img {
+		width: initial;
+	}
 	header {
 		& > * {
 			position: fixed;

@@ -100,12 +100,12 @@
 <style lang="postcss" scoped>
 	.video {
 		position: relative;
+		&:not(.fullscreen) > * {
+			cursor: pointer;
+		}
 		&.fullscreen {
 			background-color: white;
 
-			&:not(.autoplay) > * {
-				cursor: pointer;
-			}
 			& > * {
 				width: 100vw;
 				height: 100vh;
@@ -122,7 +122,7 @@
 		gap: var(--space-m);
 		justify-content: space-between;
 
-		> * {
+		& > * {
 			cursor: pointer;
 		}
 	}

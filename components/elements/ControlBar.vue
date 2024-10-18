@@ -27,17 +27,19 @@
 
 <style lang="postcss" scoped>
 	.controls {
-		position: fixed;
+		position: fixed !important;
 		top: var(--space-l);
 		right: var(--space-m);
 		width: fit-content;
 		background-color: rgba(255, 255, 255, 0.679);
-
 		z-index: 100;
 		padding: var(--space-s);
 		border-radius: var(--border-radius);
 		cursor: pointer;
 		user-select: none;
+		@media screen and (max-width: 640px) {
+			/* font-size: var(--type-s); */
+		}
 		& > .bar {
 			padding: 0 var(--space-s);
 			display: flex;
@@ -49,6 +51,11 @@
 			&.active {
 				color: white;
 			}
+
+			/* @media screen and (max-width: 640px) {
+				gap: var(--space-m);
+				flex-direction: column;
+			} */
 			& > .slider {
 				position: fixed;
 				background-color: pink;
