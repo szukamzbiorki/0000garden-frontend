@@ -9,11 +9,7 @@
 
 				<div class="container">
 					<Transition name="signup" mode="out-in">
-						<form
-							v-if="res.status == 'before'"
-							class="input"
-							@submit.prevent="handleSubmit"
-						>
+						<form v-if="res == undefined" class="input" @submit.prevent="handleSubmit">
 							<input
 								v-model="email"
 								class="text"
@@ -22,7 +18,7 @@
 								placeholder="Enter your e-mail address here"
 								@input="checkEmail"
 								required
-								:class="[{ error: emailError }]"
+								:class="{ error: emailError }"
 							/>
 							<div class="button">
 								<input class="btn" type="submit" value="Enter mailinglist" />
@@ -53,17 +49,11 @@
 
 	const email = ref('')
 	const emailError = ref(false)
-	const res = ref({ status: 'before' })
-
-	console.log(res.value)
+	const res = ref(undefined)
 
 	const checkEmail = () => {
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-		if (email == '') {
-			emailError.value == false
-		} else {
-			emailError.value = emailRegex.test(email.value) ? false : true
-		}
+		emailError.value = !emailRegex.test(email.value)
 	}
 
 	async function handleSubmit(e) {
@@ -74,8 +64,6 @@
 		}
 		const response = await $fetch('/api/submit', requestOptions)
 		res.value = response
-
-		console.log(res.value.metadata != undefined)
 	}
 </script>
 
