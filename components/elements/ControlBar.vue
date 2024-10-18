@@ -28,7 +28,7 @@
 <style lang="postcss" scoped>
 	.controls {
 		position: fixed;
-		top: var(--space-m);
+		top: var(--space-l);
 		right: var(--space-m);
 		width: fit-content;
 		background-color: rgba(255, 255, 255, 0.679);
@@ -52,7 +52,7 @@
 			& > .slider {
 				position: fixed;
 				background-color: pink;
-				top: calc(var(--space-m));
+				top: var(--space-l);
 				right: calc((3 * var(--space-m)) + v-bind(archiveWidthPx) + 2px);
 				pointer-events: none;
 				width: v-bind(sliderWidth);

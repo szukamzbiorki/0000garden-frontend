@@ -63,8 +63,12 @@
 			right: var(--space-m);
 		}
 		& > .back {
-			top: var(--space-m);
+			top: var(--space-l);
 			left: var(--space-m);
+			@media screen and (max-width: 640px) {
+				left: initial;
+				right: var(--space-m);
+			}
 		}
 
 		& > .top {
@@ -74,8 +78,9 @@
 			display: flex;
 			flex-direction: column;
 			gap: var(--space-xl);
-			@media screen and max-width(640px) {
-				position: sticky !important;
+			@media screen and (max-width: 640px) {
+				left: var(--space-m);
+				transform: translateX(0%);
 			}
 			& > .logo {
 				& > * {

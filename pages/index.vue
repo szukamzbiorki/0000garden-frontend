@@ -20,49 +20,18 @@
 	import 'animate.css'
 	const { mobile } = useScreenSize()
 
-	const { y } = useWindowScroll()
-
-	const header = ref(null)
-	const h = useElementSize(header)
-
-	const passed = ref(false)
-
-	onMounted(() => {
-		setTimeout(() => {
-			passed.value = true
-		}, 3500)
-	})
-
 	const active = useActive()
 </script>
 
 <style scoped lang="postcss">
 	.page {
-		@media screen and (min-width: 640px) {
-			/* &.active {
-				& > .signup {
-					opacity: 0;
-					top: -80vh;
-					pointer-events: none;
-				}
-			} */
-			&.active {
-				& > .archive {
-					/* top: 10vh; */
-					opacity: 1;
-				}
-			}
-			& > * {
-				position: absolute;
-				transition: top ease 0.5s, opacity 0.5s ease;
-			}
+		& > * {
+			position: absolute;
 		}
 		@media screen and (max-width: 640px) {
 			&.index {
 				max-height: 100vh;
 				& > .archive {
-					/* top: 10vh; */
-					margin-left: var(--space-m);
 					opacity: 1;
 				}
 			}
