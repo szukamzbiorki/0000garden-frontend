@@ -8,26 +8,33 @@
 				</div>
 
 				<div class="container">
-					<TransitionGroup name="signup">
-						<form v-if="true" class="input" @submit.prevent="handleSubmit">
+					<Transition name="signup" mode="out-in">
+						<form
+							v-if="res.status == 'before'"
+							class="input"
+							@submit.prevent="handleSubmit"
+						>
 							<input
+								v-model="email"
 								class="text"
-								type="email"
+								type="text"
 								name="email"
 								placeholder="Enter your e-mail address here"
+								@input="checkEmail"
 								required
+								:class="[{ error: emailError }]"
 							/>
 							<div class="button">
 								<input class="btn" type="submit" value="Enter mailinglist" />
 							</div>
 						</form>
-						<div v-if="false" class="success">
+						<div v-else-if="res.metadata != undefined" class="success">
 							You successfully signed up for the Garden Newsletter
 						</div>
-						<div v-if="false" class="error">
+						<div v-else class="error">
 							There was an error while signing up for the Garden Newsletter
 						</div>
-					</TransitionGroup>
+					</Transition>
 				</div>
 			</div>
 			<Cookie></Cookie>
@@ -44,14 +51,31 @@
 	const sanity = useSanity()
 	const { data } = await useAsyncData(() => sanity.fetch(query))
 
+	const email = ref('')
+	const emailError = ref(false)
+	const res = ref({ status: 'before' })
+
+	console.log(res.value)
+
+	const checkEmail = () => {
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+		if (email == '') {
+			emailError.value == false
+		} else {
+			emailError.value = emailRegex.test(email.value) ? false : true
+		}
+	}
+
 	async function handleSubmit(e) {
 		const email = e.target.email.value
 		const requestOptions = {
 			method: 'POST',
 			body: { email },
 		}
-		const { response } = await $fetch('/api/submit', requestOptions)
-		console.log(response)
+		const response = await $fetch('/api/submit', requestOptions)
+		res.value = response
+
+		console.log(res.value.metadata != undefined)
 	}
 </script>
 
@@ -96,19 +120,18 @@
 					padding: 2px var(--space-m);
 					color: white;
 					border-radius: var(--border-radius);
-					&:hover {
-					}
-					&:focus {
-						border-bottom: white 2px solid;
-						background-color: rgba(255, 255, 255, 0.45);
-					}
+					width: 100%;
+				}
+				.success {
+					border-bottom: white 2px solid;
+				}
+				.error {
+					border-bottom: red 2px solid;
 				}
 				& > .input {
 					display: flex;
 					flex-direction: row;
 					gap: var(--space-m);
-
-					
 
 					@media screen and (max-width: 640px) {
 						flex-direction: column;
