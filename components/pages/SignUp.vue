@@ -104,7 +104,7 @@
 				& > .success,
 				.error {
 					grid-area: 1/1;
-					background-color: rgba(255, 255, 255, 0.25);
+					background-color: var(--transparent-grey);
 					padding: 2px var(--space-m);
 					color: white;
 					border-radius: var(--border-radius);

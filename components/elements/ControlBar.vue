@@ -33,7 +33,7 @@
 		top: var(--space-l);
 		right: var(--space-m);
 		width: fit-content;
-		background-color: rgba(255, 255, 255, 0.679);
+		background-color: var(--transparent-grey);
 		z-index: 100;
 		padding: var(--space-s);
 		border-radius: var(--border-radius);

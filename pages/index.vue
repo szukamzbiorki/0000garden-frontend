@@ -52,7 +52,7 @@
 			z-index: 33;
 			color: var(--darkgrey);
 			& a {
-				color: var(--darkgrey);
+				color: var(--lightgrey);
 			}
 		}
 

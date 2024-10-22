@@ -79,9 +79,14 @@
 					border-bottom: var(--darkgrey) 1px solid;
 					color: var(--darkgrey);
 					&.upcoming {
-						filter: blur(2px);
+						color: var(--black);
+						border-bottom: var(--black) 1px solid;
+						user-select: none;
+						& > * {
+							color: var(--black) !important;
+						}
 					}
-					&:hover {
+					&:hover:not(.upcoming) {
 						color: var(--lightgrey) !important;
 						border-bottom: var(--lightgrey) 1px solid !important;
 						& > * {

@@ -59,7 +59,10 @@ img {
 	--lightgrey: #eae9ea;
 	--darkgrey: #ababab;
 	--darkergrey: #8a8a8a;
+	--black: #292929;
 	--width-m: calc(100vw - 2 * var(--space-m));
+	--transparent-grey: rgba(255, 255, 255, 0.25);
+	--transparent-grey-opaque: rgba(255, 255, 255, 0.45);
 }
 
 @media screen and (max-width: 640px) {
@@ -171,7 +174,7 @@ input {
 	}
 }
 input.text {
-	background-color: rgba(255, 255, 255, 0.25);
+	background-color: var(--transparent-grey);
 	padding-left: var(--space-m);
 	color: white;
 	border-radius: var(--border-radius);
@@ -179,7 +182,7 @@ input.text {
 	}
 	&:focus {
 		border-bottom: white 2px solid;
-		background-color: rgba(255, 255, 255, 0.45);
+		background-color: var(--transparent-grey-opaque);
 		&.error {
 			border-bottom: red 2px solid !important;
 		}
