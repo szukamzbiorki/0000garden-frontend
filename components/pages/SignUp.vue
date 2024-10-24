@@ -83,7 +83,7 @@
 		& > .middle {
 			top: 50vh;
 			left: 50vw;
-			transform: translate(-50%, -50%);
+			transform: translate(-50%, -54%);
 			display: flex;
 			flex-direction: column;
 			gap: var(--space-xl);

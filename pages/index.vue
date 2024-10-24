@@ -12,6 +12,9 @@
 				<NuxtLink to="https://00316.agency" class="additional">00316.agency</NuxtLink>
 			</div>
 		</div>
+		<div class="info left" v-show="!mobile">
+			<div class="additional">{{ data.home.tagline }}</div>
+		</div>
 		<ElementsControlBar></ElementsControlBar>
 	</div>
 </template>
@@ -19,6 +22,12 @@
 <script setup>
 	import 'animate.css'
 	const { mobile } = useScreenSize()
+
+	const query = groq`{
+		'home': *[_type == "home"]{tagline}[0]
+	}`
+	const sanity = useSanity()
+	const { data } = await useAsyncData(() => sanity.fetch(query))
 
 	const active = useActive()
 </script>
@@ -54,6 +63,11 @@
 			& a {
 				color: var(--lightgrey);
 			}
+		}
+
+		& > .left {
+			right: initial;
+			left: var(--space-m);
 		}
 
 		& > .signup {
