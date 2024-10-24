@@ -60,8 +60,7 @@
 			} */
 			& > .slider {
 				position: fixed;
-				background-color: pink;
-				backdrop-filter: blur(2px);
+				background-color: var(--transparent-grey);
 				top: var(--space-l);
 				right: calc((3 * var(--space-m)) + v-bind(archiveWidthPx) + 2px);
 				pointer-events: none;
