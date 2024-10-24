@@ -1,37 +1,35 @@
 <template>
 	<div class="archive" :class="{ active: route.path != '/' }">
-		<Transition name="fade">
-			<div v-if="y < 1" class="acres">
-				<div class="list">
-					<TransitionGroup name="list">
-						<component
-							:to="'acre/' + acre.slug.current"
-							:is="acre.upcoming ? 'div' : NuxtLink"
-							v-for="(acre, i) in data.acres"
-							:key="acre._id"
-							class="item"
-							:class="{ upcoming: acre.upcoming }"
-							v-show="route.path == '/' || acre.slug.current == route.params.id"
+		<div :class="{ show: y < 1 }" class="acres">
+			<div class="list">
+				<TransitionGroup name="list">
+					<component
+						:to="'acre/' + acre.slug.current"
+						:is="acre.upcoming ? 'div' : NuxtLink"
+						v-for="(acre, i) in data.acres"
+						:key="acre._id"
+						class="item"
+						:class="{ upcoming: acre.upcoming }"
+						v-show="route.path == '/' || acre.slug.current == route.params.id"
+					>
+						<div class="no">{{ i + 1 }}</div>
+						<div class="date">{{ formatDate(acre.date) }}</div>
+						<div class="title">{{ acre.title }}</div>
+						<div class="subject">{{ acre.subject }}</div>
+						<a
+							v-if="!mobile && acre.download?.asset.url"
+							download
+							:href="acre.download.asset.url"
+							class="dl"
+							>{{ acre.download.asset.originalFilename }}</a
 						>
-							<div class="no">{{ i + 1 }}</div>
-							<div class="date">{{ formatDate(acre.date) }}</div>
-							<div class="title">{{ acre.title }}</div>
-							<div class="subject">{{ acre.subject }}</div>
-							<a
-								v-if="!mobile && acre.download?.asset.url"
-								download
-								:href="acre.download.asset.url"
-								class="dl"
-								>{{ acre.download.asset.originalFilename }}</a
-							>
-							<div v-if="acre.contributor" class="contributor">
-								{{ acre.contributor }}
-							</div>
-						</component>
-					</TransitionGroup>
-				</div>
+						<div v-if="acre.contributor" class="contributor">
+							{{ acre.contributor }}
+						</div>
+					</component>
+				</TransitionGroup>
 			</div>
-		</Transition>
+		</div>
 	</div>
 </template>
 
@@ -80,6 +78,11 @@
 			top: calc(var(--space-m) * 2 + 5rem);
 		}
 		& > .acres {
+			opacity: 0;
+			transition: opacity 0.4s ease;
+			&.show {
+				opacity: 1;
+			}
 			& > .list {
 				display: flex;
 				flex-direction: column;
