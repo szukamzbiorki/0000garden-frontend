@@ -1,38 +1,40 @@
 <template>
-	<div class="archive">
+	<div class="archive" :class="{ active: route.path != '/' }">
 		<div v-if="data.acres[0]" class="acres">
 			<!-- <div class="title">Acre Archive</div> -->
 			<div class="list">
-				<component
-					:to="'acre/' + acre.slug.current"
-					:is="acre.upcoming ? 'div' : NuxtLink"
-					v-for="(acre, i) in data.acres"
-					:key="acre._id"
-					class="item"
-					:class="{ upcoming: acre.upcoming }"
-				>
-					<div class="no">{{ i + 1 }}</div>
-					<div class="date">{{ formatDate(acre.date) }}</div>
-					<div class="title">{{ acre.title }}</div>
-					<div v-if="true" class="subject">{{ acre.subject }}</div>
-					<a
-						v-if="!mobile && acre.download?.asset.url"
-						download
-						:href="acre.download.asset.url"
-						class="dl"
-						>{{ acre.download.asset.originalFilename }}</a
+				<TransitionGroup name="list">
+					<component
+						:to="'acre/' + acre.slug.current"
+						:is="acre.upcoming ? 'div' : NuxtLink"
+						v-for="(acre, i) in data.acres"
+						:key="acre._id"
+						class="item"
+						:class="{ upcoming: acre.upcoming }"
+						v-show="route.path == '/' || acre.slug.current == route.params.id"
 					>
-					<div v-if="!mobile && acre.contributor" class="contributor">
-						{{ acre.contributor }}
-					</div>
-				</component>
+						<div class="no">{{ i + 1 }}</div>
+						<div class="date">{{ formatDate(acre.date) }}</div>
+						<div class="title">{{ acre.title }}</div>
+						<div class="subject">{{ acre.subject }}</div>
+						<a
+							v-if="!mobile && acre.download?.asset.url"
+							download
+							:href="acre.download.asset.url"
+							class="dl"
+							>{{ acre.download.asset.originalFilename }}</a
+						>
+						<div v-if="acre.contributor" class="contributor">
+							{{ acre.contributor }}
+						</div>
+					</component>
+				</TransitionGroup>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script setup>
-	import 'animate.css'
 	const query = groq`{
 		'acres': *[_type == "acre"]{download{asset->}, ...}| order(orderRank)
 	}`
@@ -41,6 +43,11 @@
 	const { mobile } = useScreenSize()
 
 	const NuxtLink = resolveComponent('NuxtLink')
+
+	const props = defineProps({
+		route: Object,
+		active: Boolean,
+	})
 
 	function formatDate(dateString) {
 		const date = new Date(dateString)
@@ -56,9 +63,14 @@
 
 <style scoped lang="postcss">
 	.archive {
+		position: fixed !important;
 		width: var(--width-m);
 		left: var(--space-m);
 		top: 50vh;
+		transition: top 0.5s ease;
+		&.active {
+			top: calc(var(--space-m) * 2 + 7.2rem);
+		}
 		@media screen and (min-width: 640px) {
 			transform: translateY(-50%);
 		}
@@ -126,6 +138,14 @@
 						grid-column: span 2;
 						&::before {
 							content: 'Contributor: ';
+						}
+						@media screen and (max-width: 640px) {
+							grid-column: -2 / span 1;
+							/* grid-row: -2/-1; */
+							justify-self: end;
+							&::before {
+								content: 'by ';
+							}
 						}
 					}
 					& > .subject {

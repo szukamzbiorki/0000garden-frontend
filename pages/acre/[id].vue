@@ -1,22 +1,6 @@
 <template>
 	<div class="acre">
 		<div class="content">
-			<div class="bar">
-				<div class="no">{{ 1 }}</div>
-				<div v-if="!mobile" class="date">{{ formatDate(acre.date) }}</div>
-				<div class="title">{{ acre.title }}</div>
-				<div v-if="!mobile" class="subject">{{ acre.subject }}</div>
-				<a
-					v-if="!mobile && acre.download?.asset.url"
-					download
-					:href="acre.download.asset.url"
-					class="dl"
-					>{{ acre.download.asset.originalFilename }}</a
-				>
-				<div v-if="!mobile && acre.contributor" class="contributor">
-					{{ acre.contributor }}
-				</div>
-			</div>
 			<Content :sections="acre.blocks"></Content>
 		</div>
 		<div class="info" v-if="acre.contributor">
@@ -47,7 +31,7 @@
 		sanity.fetch(query, { id: route.params.id })
 	)
 
-	const { mobile } = useScreenSize()
+	
 	function formatDate(dateString) {
 		const date = new Date(dateString)
 
@@ -64,7 +48,7 @@
 	.acre {
 		position: absolute;
 		left: var(--space-m);
-		top: calc(6rem + 2 * var(--space-m));
+		top: calc(6rem + 5 * var(--space-m));
 
 		& > .info {
 			position: fixed;

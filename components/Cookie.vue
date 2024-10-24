@@ -21,8 +21,6 @@
 	const sanity = useSanity()
 	const { data } = await useAsyncData(() => sanity.fetch(query))
 
-	console.log(data.value.home.cookie)
-
 	const cookie = useCookie('garden-cookies', { sameSite: 'strict', maxAge: 60 * 60 * 5 })
 
 	function handleClick() {
@@ -32,7 +30,6 @@
 	const customSerializers = {
 		marks: {
 			link: (value) => {
-				console.log(value)
 				const isExternal = value.href && !value.href.startsWith('/')
 
 				if (isExternal) {
