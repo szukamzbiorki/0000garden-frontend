@@ -1,36 +1,37 @@
 <template>
 	<div class="archive" :class="{ active: route.path != '/' }">
-		<div v-if="data.acres[0]" class="acres">
-			<!-- <div class="title">Acre Archive</div> -->
-			<div class="list">
-				<TransitionGroup name="list">
-					<component
-						:to="'acre/' + acre.slug.current"
-						:is="acre.upcoming ? 'div' : NuxtLink"
-						v-for="(acre, i) in data.acres"
-						:key="acre._id"
-						class="item"
-						:class="{ upcoming: acre.upcoming }"
-						v-show="route.path == '/' || acre.slug.current == route.params.id"
-					>
-						<div class="no">{{ i + 1 }}</div>
-						<div class="date">{{ formatDate(acre.date) }}</div>
-						<div class="title">{{ acre.title }}</div>
-						<div class="subject">{{ acre.subject }}</div>
-						<a
-							v-if="!mobile && acre.download?.asset.url"
-							download
-							:href="acre.download.asset.url"
-							class="dl"
-							>{{ acre.download.asset.originalFilename }}</a
+		<Transition name="fade">
+			<div v-if="y < 1" class="acres">
+				<div class="list">
+					<TransitionGroup name="list">
+						<component
+							:to="'acre/' + acre.slug.current"
+							:is="acre.upcoming ? 'div' : NuxtLink"
+							v-for="(acre, i) in data.acres"
+							:key="acre._id"
+							class="item"
+							:class="{ upcoming: acre.upcoming }"
+							v-show="route.path == '/' || acre.slug.current == route.params.id"
 						>
-						<div v-if="acre.contributor" class="contributor">
-							{{ acre.contributor }}
-						</div>
-					</component>
-				</TransitionGroup>
+							<div class="no">{{ i + 1 }}</div>
+							<div class="date">{{ formatDate(acre.date) }}</div>
+							<div class="title">{{ acre.title }}</div>
+							<div class="subject">{{ acre.subject }}</div>
+							<a
+								v-if="!mobile && acre.download?.asset.url"
+								download
+								:href="acre.download.asset.url"
+								class="dl"
+								>{{ acre.download.asset.originalFilename }}</a
+							>
+							<div v-if="acre.contributor" class="contributor">
+								{{ acre.contributor }}
+							</div>
+						</component>
+					</TransitionGroup>
+				</div>
 			</div>
-		</div>
+		</Transition>
 	</div>
 </template>
 
@@ -43,6 +44,7 @@
 	const { mobile } = useScreenSize()
 
 	const NuxtLink = resolveComponent('NuxtLink')
+	const { y } = useWindowScroll()
 
 	const props = defineProps({
 		route: Object,
@@ -78,9 +80,6 @@
 			top: calc(var(--space-m) * 2 + 5rem);
 		}
 		& > .acres {
-			& > .title {
-				margin-bottom: var(--space-m);
-			}
 			& > .list {
 				display: flex;
 				flex-direction: column;
